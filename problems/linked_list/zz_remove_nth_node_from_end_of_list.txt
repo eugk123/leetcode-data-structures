@@ -1,0 +1,37 @@
+Given the head of a linked list, remove the nth node from the end of the list and return its head.
+
+Follow up: Could you do this in one pass?
+
+Input: head = [1,2,3,4,5], n = 2
+Output: [1,2,3,5]
+
+Input: head = [1], n = 1
+Output: []
+
+Input: head = [1,2], n = 1
+Output: [1]
+
+Solution: 2-Pass Algorithm
+--------
+1. Initialize curr pointer
+2. Find total length of linked list "l". Setup base case when "n" = "l", then return skipped 1st node
+3. Find the remove_index
+4. Traverse to the remove_index node
+5. Point curr to node in front of the next node (skip)
+
+Complexity
+----------
+Time: O(l), There are O(2l-n) operations
+Space: O(1), We only use extra constant space
+
+Solution: 1-Pass Algorithm
+--------
+1. Initialize curr and prev pointers
+2. One pass traversal
+3
+
+
+Complexity
+----------
+Time: O(l), There are O(l) operations
+Space: O(1), We only use extra constant space

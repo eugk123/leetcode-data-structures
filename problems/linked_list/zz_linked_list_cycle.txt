@@ -1,0 +1,68 @@
+https://leetcode.com/problems/linked-list-cycle/
+
+Given a linked list, determine if it has a cycle in it.
+
+To represent a cycle in the given linked list, we use an integer pos which represents the position (0-indexed) in the linked list where tail connects to. If pos is -1, then there is no cycle in the linked list.
+
+
+Input: head = [3,2,0,-4], pos = 1
+Output: true
+Explanation: There is a cycle in the linked list, where tail connects to the second node.
+
+
+Input: head = [1,2], pos = 0
+Output: true
+Explanation: There is a cycle in the linked list, where tail connects to the first node.
+
+
+Input: head = [1], pos = -1
+Output: false
+Explanation: There is no cycle in the linked list.
+
+
+Notes:
+-----
+- How do I make my Linked List cycle? Such that I have no Null pointer.
+Set your pointer destination to another pointer
+- How am I going to find the index / position of where the cycle occurs if I cannot output the contents of ListNode objects.
+You don't need to return a index in this problem. This problem only wants to know if there is a cycle or not.
+
+Solution (Pointer):
+--------
+
+
+Complexity (Pointer):
+----------
+Time complexity : O(n).
+    List has no cycle: The fast pointer reaches the end first and the run time depends on the list's length, which is O(n)O(n)
+    List has a cycle: We break down the movement of the slow pointer into two steps, the non-cyclic part and the cyclic part:
+Space complexity : O(1). We only use two nodes (slow and fast) so the space complexity is O(1)O(1).
+
+Solution (Hash Map):
+--------
+- Notice that when there is a cycle, the final pointer will not point to null. You can immediately return false for that case
+public static boolean hasCycle(ListNode head) {
+    ListNode curr = head;
+    while(curr != null) {
+        ...
+        curr = curr.next
+    }
+    return false;
+}
+- So the above will solve the problem when there is no cycle. But what if there is a cycle?
+- How do we go about iterating through curr.next until we checked all the existing ListNodes?
+- Notice that when there is a cycle, there is a duplicate ListNode value. We have two pointers hitting the same ListNode.
+- We can implement a Set and populate it as we cycle through each ListNode and use an IF condition to check if the Set
+  contains the current ListNode value
+- If it contains it, then return true
+    Set<ListNode> nodesSeen = new HashSet<>()
+    while(curr != null) {
+        if(nodesSeen.contain(curr) { return true; }
+        else { nodesSeen.add(curr) }
+        curr = curr.next
+    }
+
+Complexity (Hash Map):
+----------
+Time complexity : O(n). We visit each of the nn elements in the list at most once. Adding a node to the hash table costs only O(1) time.
+Space complexity: O(n). The space depends on the number of elements added to the hash table, which contains at most nn elements.

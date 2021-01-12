@@ -1,0 +1,22 @@
+What is a palindrome?
+---------------------
+A palindrome is a sequence of characters that read the same, forwards and backwards. If you tried reversing a palindrome,
+you wouldn't see a change. For example, the string "kayak" is a palindrome, but the word "livid" isn't one.
+
+There are two types of palindromes...
+-------------------------------------
+Odd and even length palindromes!
+
+Odd-length palindromes have a single character in the middle. e.g. "civic" with middle character 'v'.
+
+Even-length palindromes have two characters constitute the middle, both of which are same. e.g. "noon" with two middle characters 'o'.
+
+Pop Quiz: Is "y" a palindrome? Is "gg" a palindrome?
+----------------------------------------------------
+Yes, both of the above are palindromes. "y" is single letter (hence odd-length) palindrome whose middle is the single
+'y' character. "gg" is a double letter (hence even-length) palindrome whose middle is comprised of the two 'g' characters.
+
+Palindromes are compositionally homogeneous around their center...
+------------------------------------------------------------------
+In layman's terms, smaller palindromes make up larger palindromes. If you take the palindrome "eve" and surround it with the character 'l', you get a larger palindrome "level". Conversely, if you removed the starting and ending characters from "eve', you'd be left with the smaller, single-character palindrome "v".
+
