@@ -41,10 +41,10 @@ class Solution:
             # if the mid elements value is greater than the 0th element this means
             # the least value is still somewhere to the right as we are still dealing with elements greater than nums[0]
             if nums[mid] > nums[0]:
-                left = mid + 1
+                left = mid
             # if nums[0] is greater than the mid value then this means the smallest value is somewhere to the left
             else:
-                right = mid - 1
+                right = mid
 
 
 if __name__ == '__main__':

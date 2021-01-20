@@ -26,8 +26,6 @@ from typing import List
 class Solution:
     def letterCombinations(self, digits: str) -> List[str]:
         """
-        https://www.youtube.com/watch?v=nNGSZdx6F3M&list=PLujIAthk_iiO7r03Rl4pUnjFpdHjdjDwy&index=1&t=167s
-
         Algorithm: Backtracking
 
         Backtracking is an algorithm for finding all solutions by exploring all potential candidates.
@@ -43,6 +41,48 @@ class Solution:
                      d  e  f d  e  f d  e  f
                      |  |  | |  |  | |  |  |
                     ad ae af bd be bf cd ce cf
+        """
+
+        # Initialize numpad as HashMap
+        num_pad = dict()
+        num_pad['0'] = None
+        num_pad['1'] = None
+        num_pad['2'] = 'abc'
+        num_pad['3'] = 'def'
+        num_pad['4'] = 'ghi'
+        num_pad['5'] = 'jkl'
+        num_pad['6'] = 'mno'
+        num_pad['7'] = 'pqrs'
+        num_pad['8'] = 'tuv'
+        num_pad['9'] = 'wxyz'
+
+        self.combinations = []
+
+        # Take all combinations of input digits from left to right (no reverse)
+        def dfs(index, current):
+
+            #
+            if index == len(digits):
+                self.combinations.append(current)
+                return
+
+            # Grab current digit and set of letters.
+            digit = digits[index]
+            letters = num_pad.get(digit)
+
+            # Iterate through each letter then perform DFS to traverse next digit (thus adding another letter)
+            for letter in letters:
+                dfs(index + 1, current + letter)
+
+        if digits == "":
+            return []
+
+        dfs(0, "")
+        return list(self.combinations)
+
+    def letterCombinationsChar(self, digits: str) -> List[str]:
+        """
+        https://www.youtube.com/watch?v=nNGSZdx6F3M&list=PLujIAthk_iiO7r03Rl4pUnjFpdHjdjDwy&index=1&t=167s
         """
         # Store our answers
         result = []

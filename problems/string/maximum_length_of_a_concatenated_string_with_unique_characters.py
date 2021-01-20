@@ -5,7 +5,8 @@ from typing import List
 class Solution:
     def maxLength(self, arr: List[str]) -> int:
         """
-        https://www.youtube.com/watch?v=pD3cHFNyW2I
+        https://leetcode.com/problems/maximum-length-of-a-concatenated-string-with-unique-characters/discuss/419204/3-Solutions%3A-Backtracking-Recursive-and-DP-solutions-(With-Video-explanations)
+        https://jamboard.google.com/d/1JMV60IvmTvqvcyf6dyc7bFG-VL0LDadsDia5xtwC8gk/viewer?f=0
 
         Use a Set to store each char individually, we can use the length of the set to compare with the word and know
         whether or not the word has duplicates
@@ -15,35 +16,35 @@ class Solution:
         Time Complexity: O(2^n) - 1 top level recursive call. 2 different calls for every word. So that's O(2n) = O(n)
         Space Complexity: O(2^n) - Since we have N words, we will go N stack frames deep into the recursion.
         """
-        result = [0]
+        self.result = 0  # Captures the length of the string. Will update when new max is found.
 
-        self.maxUniqueDfs(arr, 0, "", result)
+        # Send search parties on every index. To do so, we need to paramaterize index and current word.
+        def dfs(index, current):
+            # Return if duplicate letters is found
+            if len(current) < len(set(current)):
+                return
 
-        return result[0]
+            # Return if end of array is reached
+            if index == len(arr):
+                return
 
-    def checkDuplicateChars(self, s):
-        if len(set(s)) < len(s):  # Duplicate Characters
-            return -1
-        return len(s)  # Unique Characters
+            # Return if end of array is reached, but not duplicate, and result is greater than previous
+            if len(current) == len(set(current)):
+                self.result = max(self.result, len(current))
 
-    def maxUniqueDfs(self, arr, index, current, result):
-        # Base Case: If repeating characters exist
-        if self.checkDuplicateChars(current) == -1:
-            return
+            # Call DFS at every index. To do so, we need to perform two recursions.
+            # Recursively call using current word. This allows for starting at every index.
+            # dfs(index + 1, current)
 
-        # Base Case: End of array with existing result (Update result with best answer)
-        if index == len(arr) and self.checkDuplicateChars(current) > result[0]:
-            result[0] = len(current)
-            return
+            # Recursively call using current word plus new word. This allows for combinations.
+            for i in range(index, len(arr)):
+                dfs(i + 1, current + arr[i])
 
-        # Base Case: End of array
-        if index == len(arr):
-            return
+        dfs(0, "")
 
-        # Perform recursion
-        # Send search parties to every index on the right from current index.
-        self.maxUniqueDfs(arr, index + 1, current, result)
-        self.maxUniqueDfs(arr, index + 1, current + arr[index], result)
+        return self.result
+
+
 
 if __name__ == '__main__':
     print(Solution().maxLength(arr=['aa','nvf','abc','abaaacd']))

@@ -19,20 +19,20 @@ class TreeNode:
 
     def print_in_order(self, root):
         if root:
-            self.in_order(root.left)
+            self.print_in_order(root.left)
             print(root.val, end=" ")
-            self.in_order(root.right)
+            self.print_in_order(root.right)
 
     def print_pre_order(self, root):
         if root:
             print(root.val, end=" ")
-            self.pre_order(root.left)
-            self.pre_order(root.right)
+            self.print_pre_order(root.left)
+            self.print_pre_order(root.right)
 
     def print_post_order(self, root):
         if root:
-            self.post_order(root.left)
-            self.post_order(root.right)
+            self.print_post_order(root.left)
+            self.print_post_order(root.right)
             print(root.val, end=" ")
 
     def print_level_order(self, root):

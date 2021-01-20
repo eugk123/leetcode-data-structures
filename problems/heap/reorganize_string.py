@@ -30,6 +30,7 @@ class Solution:
         # Rearrange dictionary into list of tuples then heapify.
         max_heap = [(-value, key) for key, value in map.items()]
         heapq.heapify(max_heap)
+        print(max_heap)
 
         ans = []
         # Grab letter from front + 1 index. Reduce frequency by 1. If only 1, remove
