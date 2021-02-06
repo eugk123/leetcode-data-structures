@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d08ee90c-d27d-4931-9d2b-8d3b2b68c3da" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/node/algos/bfs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/algos/dfs_iterative.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/algos/dfs_memo.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/algos/dfs_recursive.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/algos/dfs_recursive_adj.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/node/node_list_doubly.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/check_if_n_and_its_double_exist.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/duplicate_zeros.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/find_all_numbers_disappeared_in_an_array.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/find_numbers_with_even_numbers_of_digits.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/max_consecutive_ones.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/max_consecutive_ones_ii.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/merge_sorted_array.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/move_zeroes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/remove_duplicates_from_sorted_array.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/remove_element.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/replace_elements_with_greatest_element_on_right_side.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/sort_array_by_parity.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/squares_of_a_sorted_array.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/third_maximum_number.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/array/basics/valid_mountain_array.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/design/design_tic_tac_toe.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/linked_list/basics/copy_list_with_random_pointer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/linked_list/basics/design_linked_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/linked_list/basics/flatten_a_multilevel_doubly_linked_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/linked_list/basics/insert_into_a_sorted_circular_linked_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/linked_list/basics/intersection_of_two_linked_lists.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/linked_list/basics/linked_list_cycle_ii.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/linked_list/basics/odd_even_linked_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/linked_list/basics/palindrome_linked_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/linked_list/basics/remove_linked_list_elements.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/linked_list/basics/rotate_list.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/queue/basics/design_circular_queue.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/queue/basics/moving_average_from_data_stream.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/queue/basics/open_the_lock.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/queue/basics/perfect_squares.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/queue/basics/walls_and_gates.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/stack/basics/binary_tree_inorder_traversal.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/stack/basics/daily_temperatures.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/stack/basics/decode_string.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/stack/basics/evaluate_reverse_polish_notation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/stack/basics/min_stack.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/stack/basics/target_sum.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/stack/basics/valid_parentheses.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/problems/stack/word_break_II.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/array/3sum.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/array/3sum.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/array/letter_combinations_of_a_phone_number.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/array/letter_combinations_of_a_phone_number.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/array/maximum_product_subarray.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/array/maximum_product_subarray.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/array/search_in_rotated_sorted_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/array/search_in_rotated_sorted_array.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/graph/clone_graph.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/graph/clone_graph.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/graph/number_of_connected_components.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/graph/number_of_connected_components.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/graph/reorder_routes_to_make_all_paths_lead_to_city_zero.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/graph/reorder_routes_to_make_all_paths_lead_to_city_zero.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/heap/top_k_frequent_words.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/heap/top_k_frequent_words.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/matrix/number_of_islands.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/matrix/number_of_islands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/tree/binary_tree_level_order_traversal.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/tree/binary_tree_level_order_traversal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/tree/boundary_of_binary_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/tree/boundary_of_binary_tree.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/tree/kth_smallest_element_in_bst.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/tree/kth_smallest_element_in_bst.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/problems/tree/maximum_depth_of_binary_tree.py" beforeDir="false" afterPath="$PROJECT_DIR$/problems/tree/maximum_depth_of_binary_tree.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1lzMEKuHOZDGKfjOJeTmm4m2Jin" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/node/algos" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PythonContentEntriesConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/problems/stack/basics" />
+      <recent name="$PROJECT_DIR$/problems/stack" />
+      <recent name="$PROJECT_DIR$/problems/design" />
+      <recent name="$PROJECT_DIR$/problems/matrix/basics" />
+      <recent name="$PROJECT_DIR$/problems/queue_stack" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/node/algos" />
+      <recent name="$PROJECT_DIR$/node" />
+      <recent name="$PROJECT_DIR$/strings" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.decode_string">
+    <configuration name="binary_tree_inorder_traversal" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="data-structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/problems/stack/basics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/problems/stack/basics/binary_tree_inorder_traversal.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="decode_string" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="data-structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/problems/stack/basics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/problems/stack/basics/decode_string.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dfs_recursive_adj" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="data-structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/node/algos" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/node/algos/dfs_recursive_adj.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="target_sum" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="data-structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/problems/stack/basics" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/problems/stack/basics/target_sum.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="word_break_II" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="data-structures" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/problems/queue" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/problems/stack/word_break_II.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.decode_string" />
+        <item itemvalue="Python.binary_tree_inorder_traversal" />
+        <item itemvalue="Python.target_sum" />
+        <item itemvalue="Python.word_break_II" />
+        <item itemvalue="Python.dfs_recursive_adj" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d08ee90c-d27d-4931-9d2b-8d3b2b68c3da" name="Default Changelist" comment="" />
+      <created>1608595353546</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1608595353546</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="424" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1609609953471">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="424" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1609041234392" />
+    <state x="424" y="213" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1609609953471" />
+    <state x="646" y="360" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608963619447">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="646" y="360" key="#com.intellij.fileTypes.FileTypeChooser/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1608963619447" />
+    <state width="1899" height="267" key="GridCell.Tab.0.bottom" timestamp="1612648216393">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="142" key="GridCell.Tab.0.bottom/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1611912566388" />
+    <state width="1899" height="216" key="GridCell.Tab.0.bottom/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1611992016185" />
+    <state width="1659" height="215" key="GridCell.Tab.0.bottom/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@-1680.23.1680.1027" timestamp="1612253231649" />
+    <state width="1899" height="267" key="GridCell.Tab.0.bottom/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1612648216393" />
+    <state width="1419" height="316" key="GridCell.Tab.0.bottom/0.23.1440.877@0.23.1440.877" timestamp="1612550682346" />
+    <state width="1899" height="267" key="GridCell.Tab.0.center" timestamp="1612648216392">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="142" key="GridCell.Tab.0.center/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1611912566388" />
+    <state width="1899" height="216" key="GridCell.Tab.0.center/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1611992016184" />
+    <state width="1659" height="215" key="GridCell.Tab.0.center/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@-1680.23.1680.1027" timestamp="1612253231648" />
+    <state width="1899" height="267" key="GridCell.Tab.0.center/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1612648216392" />
+    <state width="1419" height="316" key="GridCell.Tab.0.center/0.23.1440.877@0.23.1440.877" timestamp="1612550682345" />
+    <state width="1899" height="267" key="GridCell.Tab.0.left" timestamp="1612648216391">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="142" key="GridCell.Tab.0.left/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1611912566387" />
+    <state width="1899" height="216" key="GridCell.Tab.0.left/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1611992016184" />
+    <state width="1659" height="215" key="GridCell.Tab.0.left/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@-1680.23.1680.1027" timestamp="1612253231648" />
+    <state width="1899" height="267" key="GridCell.Tab.0.left/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1612648216391" />
+    <state width="1419" height="316" key="GridCell.Tab.0.left/0.23.1440.877@0.23.1440.877" timestamp="1612550682345" />
+    <state width="1899" height="267" key="GridCell.Tab.0.right" timestamp="1612648216392">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="142" key="GridCell.Tab.0.right/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1611912566388" />
+    <state width="1899" height="216" key="GridCell.Tab.0.right/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1611992016185" />
+    <state width="1659" height="215" key="GridCell.Tab.0.right/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@-1680.23.1680.1027" timestamp="1612253231649" />
+    <state width="1899" height="267" key="GridCell.Tab.0.right/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1612648216392" />
+    <state width="1419" height="316" key="GridCell.Tab.0.right/0.23.1440.877@0.23.1440.877" timestamp="1612550682345" />
+    <state width="1899" height="358" key="GridCell.Tab.1.bottom" timestamp="1612254273522">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="358" key="GridCell.Tab.1.bottom/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1609737782096" />
+    <state width="1899" height="358" key="GridCell.Tab.1.bottom/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1611556869368" />
+    <state width="1899" height="358" key="GridCell.Tab.1.bottom/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1612254273522" />
+    <state width="1899" height="358" key="GridCell.Tab.1.bottom/0.23.1440.877@0.23.1440.877" timestamp="1611594417819" />
+    <state width="1899" height="358" key="GridCell.Tab.1.center" timestamp="1612254273521">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="358" key="GridCell.Tab.1.center/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1609737782095" />
+    <state width="1899" height="358" key="GridCell.Tab.1.center/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1611556869367" />
+    <state width="1899" height="358" key="GridCell.Tab.1.center/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1612254273521" />
+    <state width="1899" height="358" key="GridCell.Tab.1.center/0.23.1440.877@0.23.1440.877" timestamp="1611594417819" />
+    <state width="1899" height="358" key="GridCell.Tab.1.left" timestamp="1612254273520">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="358" key="GridCell.Tab.1.left/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1609737782091" />
+    <state width="1899" height="358" key="GridCell.Tab.1.left/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1611556869367" />
+    <state width="1899" height="358" key="GridCell.Tab.1.left/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1612254273520" />
+    <state width="1899" height="358" key="GridCell.Tab.1.left/0.23.1440.877@0.23.1440.877" timestamp="1611594417818" />
+    <state width="1899" height="358" key="GridCell.Tab.1.right" timestamp="1612254273521">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state width="1899" height="358" key="GridCell.Tab.1.right/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1609737782095" />
+    <state width="1899" height="358" key="GridCell.Tab.1.right/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1611556869367" />
+    <state width="1899" height="358" key="GridCell.Tab.1.right/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1612254273521" />
+    <state width="1899" height="358" key="GridCell.Tab.1.right/0.23.1440.877@0.23.1440.877" timestamp="1611594417819" />
+    <state x="469" y="190" key="SettingsEditor" timestamp="1609010976319">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="469" y="190" key="SettingsEditor/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1609010976319" />
+    <state x="508" y="287" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1612254272150">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="508" y="287" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1609701755843" />
+    <state x="508" y="287" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1610434663751" />
+    <state x="508" y="287" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1612254272150" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup" timestamp="1612502294309">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1611889060412" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1612502294309" />
+    <state x="385" y="213" width="670" height="676" key="search.everywhere.popup/-3120.23.1440.877/-1680.23.1680.1027/0.23.1920.1057@0.23.1920.1057" timestamp="1612432272530" />
+    <state x="289" y="181" width="670" height="561" key="search.everywhere.popup/0.23.1440.877@0.23.1440.877" timestamp="1608943822539" />
+    <state x="690" y="460" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1609011325218">
+      <screen x="0" y="23" width="1920" height="1057" />
+    </state>
+    <state x="690" y="460" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/-1680.23.1680.1027/-3120.23.1440.877/0.23.1920.1057@0.23.1920.1057" timestamp="1609011325218" />
+  </component>
+</project>

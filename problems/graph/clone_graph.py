@@ -29,16 +29,12 @@ class Solution:
     """
     def cloneGraph(self, node):
         def dfs(node):
-            # Base case - if empty, return the node or None
-            if not node:
-                return node
-
             # If the node was already visited before
             # Return the clone from the visited dictionary.
             if node in visited:
                 return visited[node]
 
-            # Create copy and add to visited dict
+            # Process: Create copy and add to visited dict
             copy = Node(node.val)
             visited[node] = copy
 
@@ -48,12 +44,17 @@ class Solution:
                 copy_nei = dfs(nei)
 
                 # Append copied neighbor to current copied node
-                if copy_nei:
-                    copy.neighbors.append(copy_nei)
+                copy.neighbors.append(copy_nei)
+
             return copy
 
-        # Base case - empty
+        # Base case - if empty, return the node or None
+        if not node:
+            return node
+
+        # Initiate visited map which will contain node -> copy
         visited = {}
+
         return dfs(node)
 
 if __name__ == '__main__':

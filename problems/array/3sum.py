@@ -9,7 +9,7 @@ class Solution:
 
         res = []
 
-        # Iterate current pointer as the target and Use L and R pointer (binary search) for each iteration
+        # Iterate current pointer as the target and Use L and R pointer (two pointer) for each iteration
         for curr in range(len(nums)):
 
             # Since curr is one step behind left, if they are equal, traverse both to the right 1 step

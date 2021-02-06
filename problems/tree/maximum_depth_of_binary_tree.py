@@ -1,49 +1,30 @@
+"""
+https://leetcode.com/problems/maximum-depth-of-binary-tree
+"""
 from node_tree import TreeNode
-import collections
+from collections import deque
 class Solution:
     def maxDepth(self, root):
         """
         :type root: TreeNode
         :rtype: int
         """
+        # Base case, returning depth of 0 when root is empty
         if root is None:
             return 0
-        queue = [root]
+
+        queue = deque([root])
         depth = 0
         while queue:
             depth += 1
             for i in range(len(queue)):
-                cur_root = queue.pop(0)
+                cur_root = queue.popleft()
                 if cur_root.left:
                     queue.append(cur_root.left)
                 if cur_root.right:
                     queue.append(cur_root.right)
         return depth
 
-    def maxDepth_deque(self, root):
-        """
-        https://leetcode.com/problems/maximum-depth-of-binary-tree/
-
-        The BFS algorithm works great here.
-        :type root: TreeNode
-        :rtype: int
-        """
-        if not root:
-            return 0
-
-        tqueue, h = collections.deque(), 0
-        tqueue.append(root)
-        while tqueue:
-            nextlevel = collections.deque()
-            while tqueue:
-                front = tqueue.popleft()
-                if front.left:
-                    nextlevel.append(front.left)
-                if front.right:
-                    nextlevel.append(front.right)
-            tqueue = nextlevel
-            h += 1
-        return h
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

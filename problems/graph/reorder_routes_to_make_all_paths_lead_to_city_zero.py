@@ -37,21 +37,5 @@ class Solution:
 
         return self.ans
 
-
-
-
 if __name__ == '__main__':
-    node = n0 = Node(0)
-    n1 = Node(1)
-    n2 = Node(2)
-    n3 = Node(3)
-    n4 = Node(4)
-    n5 = Node(5)
-    n0.neighbors = [n1]
-    n1.neighbors = [n3]
-    n2.neighbors = [n3]
-    n3.neighbors = []
-    n4.neighbors = [n0, n5]
-    n5.neighbors = []
-
     print(Solution().minReorder(n=6, connections=[[0,1],[1,3],[2,3],[4,0],[4,5]]))

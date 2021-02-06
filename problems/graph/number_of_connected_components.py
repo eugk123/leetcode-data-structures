@@ -62,4 +62,4 @@ class Solution:
                 self.dfs(adj, neighbor, visited)
 
 if __name__ == '__main__':
-    print(Solution().countComponents(6, [[0, 1], [1, 2]]))
+    print(Solution().countComponents(3, [[0, 1], [1, 2]]))

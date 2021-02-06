@@ -56,12 +56,13 @@ class Solution:
         num_pad['8'] = 'tuv'
         num_pad['9'] = 'wxyz'
 
-        self.combinations = []
+        # Store results here
+        combinations = []
 
         # Take all combinations of input digits from left to right (no reverse)
         def dfs(index, current):
 
-            #
+            # When index is equal len(digits), we know we've reached the end
             if index == len(digits):
                 self.combinations.append(current)
                 return
@@ -72,13 +73,15 @@ class Solution:
 
             # Iterate through each letter then perform DFS to traverse next digit (thus adding another letter)
             for letter in letters:
+                # No need to update the string by removing the letter because strings are immutable.
+                # This means in the next recursive call using a different letter, the old state will not be saved!
                 dfs(index + 1, current + letter)
 
         if digits == "":
             return []
 
         dfs(0, "")
-        return list(self.combinations)
+        return combinations
 
     def letterCombinationsChar(self, digits: str) -> List[str]:
         """

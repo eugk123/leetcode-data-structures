@@ -3,7 +3,7 @@ https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 """
 from node_tree import TreeNode
 class Solution:
-    def kthSmallest(self, root: TreeNode, k: int) -> int:
+    def kthSmallestDfsRecursive(self, root: TreeNode, k: int) -> int:
         # Use Inorder to traverse through tree. Take the min everytime and end after finishing traversal. Return min
         def dfs_in_order(root):
             if root == None:
@@ -16,6 +16,19 @@ class Solution:
         dfs_in_order(root)
         return values[k-1]
 
+    # def kthSmallestDfsIterative(self, root: TreeNode, k: int) -> int:
+
+        # stack = [root]
+        # values = []
+        # while stack:
+        #
+        #     curr = stack.pop()
+        #     values.append(curr.val)
+        #
+        #     if curr.right:
+        #         stack.append(curr.left)
+        #     if curr.left:
+        #         stack.append(curr.right)
 
 if __name__ == '__main__':
     root = TreeNode(5)
@@ -24,4 +37,4 @@ if __name__ == '__main__':
     root.left.left = TreeNode(1)
     root.left.right = TreeNode(2)
     root.left.left.left = TreeNode(0)
-    print(Solution().kthSmallest(root, k=2))
+    print(Solution().kthSmallestDfsRecursive(root, k=2))

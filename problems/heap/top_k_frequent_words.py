@@ -25,6 +25,7 @@ class Solution:
         heapq.heapify(heap)
 
         # Grab the most frequent k words (stored on index [1]) using heappop
+        # Time complexity is K * log(N), K elements and log(N) to insert every time.
         res = []
         for i in range(k):
             res.append(heapq.heappop(heap)[1])

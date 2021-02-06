@@ -16,7 +16,11 @@ class Solution:
     """
     def boundaryOfBinaryTree(self, root: TreeNode) -> List[int]:
         def dfs_left(node):
-            # Closure condition - if root == null or childs are both null | We're gonna grab the final left-most via leaves
+            """
+            Return leftmost nodes starting from root, but no leaves.
+            """
+            # Return condition - if root == null or children are both null
+            # Else - We're gonna grab the final left-most via leaves
             if not node or (not node.left and not node.right):
                 return
             else:
@@ -28,6 +32,9 @@ class Solution:
                 dfs_left(node.right)
 
         def dfs_leaves(node):
+            """
+            Return leaves only
+            """
             if not node:
                 return
 
@@ -39,6 +46,9 @@ class Solution:
             dfs_leaves(node.right)
 
         def dfs_right(node):
+            """
+            Return rightmost nodes, no children
+            """
             # Same closure condition
             if not node or (not node.left and not node.right):
                 return
