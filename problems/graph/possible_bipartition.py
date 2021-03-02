@@ -21,44 +21,51 @@ class Solution:
     The array contains three numbers: (0 = Unvisited, 1 = Group A, -1 = Group B).
     Once the entire graph has been visited or if two node of the same group are next to each other, the recursion ends.
     """
-    def possibleBipartition(self, n, dislikes):
-        # Build adjacency list
-        adj = dict()  # Initialize map
-        for i in range(0, n): adj[i] = []  # Fill in Keys with empty lists
+    def possibleBipartition(self, N, dislikes):
+        def dfs(index, prev_group):
+            print(index, prev_group, visited[index - 1])
+
+            if visited[index - 1] == prev_group:
+                return False
+
+            # Group A = 1, Group B = -1
+            if visited[index - 1] == 1 or visited[index - 1] == -1:
+                return
+
+            # Alternate Groups Every Traversal, Starting point (else) set to 1
+            if prev_group == 1:
+                visited[index - 1] = -1
+            elif prev_group == -1:
+                visited[index - 1] = 1
+            else:
+                # You can choose either 1 or -1.
+                visited[index - 1] = 1
+
+            for nei in adj.get(index):
+                prev = visited[index - 1]
+                if dfs(nei, prev) is False:
+                    return False
+
+            return
+
+        adj = {}
+        # Range 1 to N + 1 because first index is 1
+        for i in range(1, N + 1):
+            adj[i] = []
+
         for edge in dislikes:
-            adj.get(edge[0]-1).append(edge[1]-1)
-            adj.get(edge[1]-1).append(edge[0]-1)
+            adj[edge[0]].append(edge[1])
+            adj[edge[1]].append(edge[0])
 
-        # Perform DFS
-        visited = [0] * n
+        visited = [0] * N
 
-        # We search through every node in case of multiple components e.g. [[1,2],[3,4],[4,5],[3,5]]
-        for index in range(0, n):
-            # If dfs finds two neighbors with same grouping, then return false
-            if visited[index] == 0 and self.dfs(adj, visited, index, 99) is False:
+        # Can have multiple components
+        # First index = 1
+        for i in range(1, N + 1):
+            prev = None  # There is no previous, so set to None
+            if dfs(i, prev) is False:
                 return False
-        return True
 
-
-    def dfs(self, adj, visited, index, previous):
-        # Closure Condition
-        if previous == visited[index]:
-            return False
-        if visited[index] == -1 or visited[index] == 1:
-            return True
-
-        # Alternate Groups Every Traversal, Starting point (else) set to 1
-        if previous == 1:
-            visited[index] = -1
-        elif previous == -1:
-            visited[index] = 1
-        else:
-            visited[index] = 1
-
-        for neighbor_index in adj.get(index):
-            previous = visited[index]
-            if self.dfs(adj, visited, neighbor_index, previous) is False:
-                return False
         return True
 
 if __name__ == '__main__':

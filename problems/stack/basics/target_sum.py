@@ -14,7 +14,7 @@ class Solution:
 
         Time complexity: O(l⋅n). The memo array of size l⋅n has been filled just once.
             Here, l refers to the range of sum. n refers to the size of nums array.
-        Space complexity: O(l⋅n). The depth of recursion tree can go up to n. The memo array contains l⋅n elements.
+        Space complexity: O(l⋅n). The depth of recursion binary_tree can go up to n. The memo array contains l⋅n elements.
         """
 
         def dfs(current, index):
@@ -32,10 +32,16 @@ class Solution:
                     return 0
 
             # if (current, index) not in memo:
-
             add = dfs(current + nums[index], index + 1)
             minus = dfs(current - nums[index], index + 1)
             memo[(current, index)] = add + minus
+
+            # You might be wondering how the hell is add + minus returning a higher number than 1?
+            # The reason for this is because we are returning the summation of both every recursive call. And as we
+            # go back up the call stack, add + minus will pull in the previous (add + minus) + (add + minus), which
+            # will sum all the possible combinations. You can draw this out completely to show the interviewer. You can
+            # also see this with the following print statement that includes the index (call stack)
+            # print(add, minus, index)
 
             return add + minus
 
@@ -51,8 +57,8 @@ class Solution:
         """
         Time limit exceeded with just DFS.
 
-        Time complexity: O(2^n) - size of recursion tree, n refers to the size of the nums array
-        Space complexity: O(n) - depth of recursion tree
+        Time complexity: O(2^n) - size of recursion binary_tree, n refers to the size of the nums array
+        Space complexity: O(n) - depth of recursion binary_tree
         """
 
         def dfs(current, index):

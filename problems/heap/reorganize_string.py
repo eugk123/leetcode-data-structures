@@ -37,6 +37,7 @@ class Solution:
         while len(max_heap) >= 2:
             nct1, ch1 = heapq.heappop(max_heap)
             nct2, ch2 = heapq.heappop(max_heap)
+
             ans.extend([ch1, ch2])
             if nct1 + 1 != 0:
                 heapq.heappush(max_heap, (nct1 + 1, ch1))

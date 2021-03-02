@@ -6,40 +6,53 @@ class Solution:
     https://leetcode.com/problems/number-of-ways-to-split-a-string/discuss/830536/Python-or-One-pass-or-Explained-and-Visualised
     """
     def numWays(self, s: str) -> int:
-        m = 10 ** 9 + 7  # Take the modulus of 10^9 + 7
+        # Count the total number of 1s and 0s
+        ones_count = 0
+        zeroes_count = 0
+        for char in s:
+            if char == '1':
+                ones_count += 1
+            if char == '0':
+                zeroes_count += 1
 
-        # Grab the indices and count for "1"
-        ones_indices = []
-        for i in range(len(s)):
-            if s[i] == '1':
-                ones_indices.append(i)
-        ones_count = len(ones_indices)
-
-        # Scenario 3) Zero 1s scenario, only 0s
+        # If count == 0, then we need to figure out what the equation is for
+        # Number of Zeroes -> Total combinations
+        # 3 zeroes -> 1
+        # 4 zeroes -> 1 + 2
+        # 5 zeroes -> 1 + 2 + 3 ...
+        # total = (n-1)(n-2)/2
         if ones_count == 0:
-            n = len(s)
-            return int((n - 1) * (n - 2) / 2 % m)
+            if zeroes_count < 3:
+                return 0
+            if zeroes_count >= 3:
+                return int((zeroes_count - 1) * (zeroes_count - 2) / 2) % (10 ** 9 + 7)
 
-        # Scenario 2) Total number of 1s not divisible by 3
-        remainder = ones_count % 3
-        if remainder > 0:
+        # If count is not divisible by 3, then return 0
+        if ones_count % 3 != 0:
             return 0
 
-        # Scenario 3) Total number of 1s divisible by 3
-        a = int(ones_count / 3 - 1)
-        b = int(ones_count / 3)
-        c = int(ones_count / 3 * 2 - 1)
-        d = int(ones_count / 3 * 2)
+        # Number of ones per section
+        ones_count_per_section = int(ones_count / 3)
 
-        # Number of zeros between block 1 and block 2
-        x = ones_indices[a] - ones_indices[b]
-        # Number of zeros between block 2 and block 3
-        y = ones_indices[c] - ones_indices[d]
+        # Count the zeroes between each section
+        # The solution will be (# of zeroes + 1 of section a) * (# of zeroes + 1 of section b)
+        ones_count = 0
+        product_a = 0
+        product_b = 0
+        for char in s:
+            # If number of ones per section is met, then start counting zeroes
+            if ones_count == ones_count_per_section and char == '0':
+                product_a += 1
 
-        ans = x * y % m
-        return (int)(ans)
+            if ones_count == ones_count_per_section * 2 and char == '0':
+                product_b += 1
 
+            if char == '1':
+                if ones_count == ones_count_per_section * 2:
+                    break
+                ones_count += 1
 
+        return (product_a + 1) * (product_b + 1) % (10 ** 9 + 7)
 
 if __name__ == '__main__':
     print(Solution().numWays('10101'))

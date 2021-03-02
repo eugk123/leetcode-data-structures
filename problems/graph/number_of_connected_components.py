@@ -53,13 +53,16 @@ class Solution:
         return count
 
     def dfs(self, adj, index, visited):
+        # Constraint - Visited
+        if visited[index] == 1:
+            return
+
         # Mark the current node as visited
         visited[index] = 1
 
         # Get all the neighbors of this node
         for neighbor in adj.get(index):
-            if visited[neighbor] == 0:
-                self.dfs(adj, neighbor, visited)
+            self.dfs(adj, neighbor, visited)
 
 if __name__ == '__main__':
-    print(Solution().countComponents(3, [[0, 1], [1, 2]]))
+    print(Solution().countComponents(5, [[0, 1], [1, 2], [3, 4]]))

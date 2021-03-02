@@ -23,6 +23,7 @@ class Solution:
         heapq.heapify(max_heap)
 
         # Heappop taking the front element. Take the number using index [1].
+        # log(K)
         res = []
         for i in range(k):
             res.append(heapq.heappop(max_heap)[1])

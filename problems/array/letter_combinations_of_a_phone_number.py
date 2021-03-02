@@ -64,7 +64,7 @@ class Solution:
 
             # When index is equal len(digits), we know we've reached the end
             if index == len(digits):
-                self.combinations.append(current)
+                combinations.append(current)
                 return
 
             # Grab current digit and set of letters.

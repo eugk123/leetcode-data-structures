@@ -25,26 +25,38 @@ def isAnagram(s: str, t: str) -> bool:  # HashMap
     no matter how large n is.
 
     """
-    if len(t) != len(s):
+    # If different lengths, return False
+    if len(s) != len(t):
         return False
 
-    char_map = dict()
-    for i in range(len(s)):
-        if s[i] in char_map:
-            char_map[s[i]] += 1  # Add duplicate counter +1
-        else:
-            char_map[s[i]] = 2  # Start at 2 instead of 1.
-    print(char_map)
+    # Initialize map to check for anagrams
+    map = {}
 
-    for i in range(len(t)):
-        print(i)
-        if t[i] in char_map and char_map[t[i]] > 0:  # Checks to see if t char exists in map and the number of duplicates are expected
-            char_map[t[i]] -= 1  # Remove duplicate counter -1
-        if t[i] not in char_map:
+    # Populate first input
+    for letter in s:
+        # Add new letter to map
+        if not map.get(letter):
+            map[letter] = 1
+
+        # If duplicate, add 1 to count
+        else:
+            map[letter] += 1
+
+    # Check map against second input
+    for letter in t:
+        # If letter not in map, return False
+        if not map.get(letter):
             return False
-        if t[i] in char_map and char_map[t[i]] == 0:  # When value is at 0, this means t has more duplicate characters than s
-            return False
-    print(char_map)  # Should result in {'a': 1, 'b': 1, 'c': 1} for
+
+        # If it is in map, subtract 1
+        elif map.get(letter):
+            map[letter] -= 1
+
+        # If count == 0, then pop that letter
+        if map.get(letter) == 0:
+            map.pop(letter)
+
+    # If not returned False, we know s & t are anagrams of each other.
     return True
 
 if __name__ == '__main__':

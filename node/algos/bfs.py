@@ -32,7 +32,7 @@ def bfs_graph(root: Node):
             # Do something - Remove print statement
             print(curr.val, end=" ")
 
-            # Append neighbors to queue (instead of children in a tree)
+            # Append neighbors to queue (instead of children in a binary_tree)
             for nei in curr.neighbors:
                 queue.append(nei)
 
@@ -47,7 +47,7 @@ def bfs_graph_w_visited(root: Node):
             # Do something - Remove print statement
             print(curr.val, end=" ")
 
-            # Append neighbors to queue (instead of children in a tree)
+            # Append neighbors to queue (instead of children in a binary_tree)
             for nei in curr.neighbors:
 
                 # Constraint - Visited, skip

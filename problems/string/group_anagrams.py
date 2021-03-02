@@ -48,14 +48,36 @@ class Solution:
 
         Time is O(NK)
         """
-        ans = dict()
-        for s in strs:
+        # Base case - empty list
+        if not strs:
+            return strs
+
+        # This map will contain value (counts of each ord(char)) to key (list of anagrams)
+        map = {}
+
+        # Iterate through each word. The idea is to have a unique key that matches all valid anagrams to group them in the map key.
+        for word in strs:
+
+            # Map key will contain a tuple of 26 values that contain the count of each letter.
             count = [0] * 26
-            for c in s:
-                count[ord(c) - ord('a')] += 1
-            if ans.get(tuple(count)) is None:
-                ans[tuple(count)] = []
-            ans[tuple(count)].append(s)  # Add the char tuple
-        return ans.values()
+            for letter in word:
+                ord_val = ord(letter) - ord('a')
+                count[ord_val] += 1
+
+            # Convert count to tuple (key in map has to be immutable)
+            count = tuple(count)
+
+            # Create an entry in the map if it doens't exist
+            if not map.get(count):
+                map[count] = [word]
+            else:
+                map[count].append(word)
+
+        # Iterate through each map key and append to result.
+        res = []
+        for key in map:
+            res.append(map.get(key))
+
+        return res
 if __name__ == '__main__':
     print(Solution().groupAnagramsOptimized(["bad", "adb", "pee", "eep"]))

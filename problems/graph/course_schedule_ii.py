@@ -45,11 +45,12 @@ class Solution:
         # 0 - unvisited, -1 - visiting, 1 - visited
         visited = [0] * numCourses
 
+        # Iterate through each node because we could have multiple components.
         for node in adj:
             if dfs(node):  # If there is a cycle, return []
                 return []
         return res  # Otherwise, return res
 
 if __name__ == '__main__':
-    print(Solution().findOrder(numCourses=2, prerequisites=[[1,0]]))
+    print(Solution().findOrder(numCourses = 6, prerequisites = [[2,0],[3,0],[4,0],[5,4],[5,3],[1,5]]))
     # print(Solution().findOrder(numCourses=3, prerequisites=[[0,1],[1,2]]))

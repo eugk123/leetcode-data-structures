@@ -5,7 +5,81 @@ from typing import List
 from collections import deque
 import math
 class Solution:
-    def wallsAndGates(self, rooms) -> None:
+    def wallsAndGates_CleanAttempt(self, rooms: List[List[int]]) -> None:
+        # Run bfs starting from gates
+        def bfs(i, j):
+
+            queue = deque([(i, j, 0)])
+
+            # Traverse in 4 directions for a matrix
+            directions = [[1,0], [-1,0], [0,1], [0,-1]]
+
+            while queue:
+                curr = queue.pop()
+                c_i = curr[0]
+                c_j = curr[1]
+
+                # Update distance + 1
+                distance = curr[2] + 1
+
+                for direction in directions:
+                    i = c_i + direction[0]
+                    j = c_j + direction[1]
+
+                    # Constraint - out of bounds
+                    if i < 0 or j < 0 or i >= len(rooms) or j >= len(rooms[0]):
+                        continue
+
+                    # Constraint - at a gate or wall
+                    if result[i][j] == 0 or result[i][j] == -1:
+                        continue
+
+                    # Constaint - if distance is greater than or equal to current result
+                    if distance >= result[i][j]:
+                        continue
+
+                    # Update result with shortest distance if distance is less than current result
+                    result[i][j] = distance
+
+                    queue.append((i, j, distance))
+
+            return
+
+        result = rooms
+
+        # Run BFS starting only from gates. That way you can populate shortest path to every room.
+        for i in range(len(rooms)):
+            for j in range(len(rooms[0])):
+                if rooms[i][j] == 0:
+                    bfs(i, j)
+
+        print(result)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    def wallsAndGates(self, rooms: List[List[int]]) -> None:
         """
         Determine shortest path from gate at every index.
 
@@ -34,7 +108,7 @@ class Solution:
                     i = c_i + direction[0]
                     j = c_j + direction[1]
 
-                    # Constraints: (1) Out of bounds, (2) Value == 0 or Visited
+                    # Constraints: (1) Out of bounds, (2) Value == 0 or Visited or current value <= prev value
                     if i < 0 or j < 0 or i >= len(rooms) or j >= len(rooms[0]) or rooms[i][j] <= rooms[c_i][c_j] + 1:
                         continue
 
@@ -61,4 +135,4 @@ if __name__ == '__main__':
              [math.inf, -1, math.inf, -1],      # [1,-1,2,-1]
              [0, -1, math.inf, math.inf]]      # [0,-1,3,4]
 
-    Solution().wallsAndGates(rooms)
+    Solution().wallsAndGates_CleanAttempt(rooms)
