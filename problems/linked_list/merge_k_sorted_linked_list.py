@@ -3,6 +3,7 @@ https://leetcode.com/problems/merge-k-sorted-lists
 """
 from node.node_list import ListNode
 from typing import List
+from math import ceil
 class Solution:
     """
     Continuation of Merge Two Lists problem.
@@ -33,27 +34,43 @@ class Solution:
 
             return dummy.next
 
-        # List is null
-        if lists is None or len(lists) == 0:
+        # Empty List
+        if not lists:
             return None
 
-        # The solution is to merge two lists within the total number of lists.
-        # So for example, 4 total lists -> 2 total lists -> 1 total list. Since we're cutting in half everytime,
-        # this is O(logk) time complexity, where k is the total number of lists
-        # Since the merge iterates through the entire list, that is O(N) time complexity where N is the total number of elements
-        while len(lists) > 1:
-            mergedList = []
+        # Merge every two lists. Every iteration, you'll notice the length divides by two.
+        # You do this until the length == 1.
+        length = len(lists)
+        while length != 1:
 
-            # Take every two adjacent lists using range function.
-            for i in range(0, len(lists), 2):
-                # For odd number of lists, the last iteration will not have a 2nd list. Need to check for that.
-                # Having None is completely fine. The mergeTwoList will still work for empty lists.
-                l1 = lists[i]
-                l2 = lists[i + 1] if (i + 1) < len(lists) else None
+            # Notice this works perfectly for even cases.
+            if length % 2 == 0:
+                # Each merge divides the length by 2. If it's an odd length, it would be ceil(L/2)
+                length = ceil(length / 2)
 
-                mergedList.append(mergeTwoLists(l1, l2))
-            lists = mergedList
+                # Iterate up to the zero-based halved length and merge every two lists.
+                i = 0
+
+                while i <= length - 1:  # 0, 1
+                    lists[i] = mergeTwoLists(lists[2 * i], lists[2 * i + 1])
+                    i += 1
+
+            # Whenever we have odd number of lists, we need to perform one less iteration and add the final list
+            # at the end because it has nothing to merge with
+            else:
+                # Each merge divides the length by 2. If it's an odd length, it would be ceil(L/2)
+                length = ceil(length / 2)
+
+                # Iterate up to the zero-based halved length and merge every two lists.
+                i = 0
+
+                while i <= length - 2:  # 0
+                    lists[i] = mergeTwoLists(lists[2 * i], lists[2 * i + 1])
+                    i += 1
+                lists[i] = lists[2 * i]  # Add last list at the end.
+
         return lists[0]
+
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

@@ -8,64 +8,51 @@ class Solution:
 
     LeetCode not only wants the len(string), but also the modified input array.
 
-    Better solution in video. Below is my solution.
+    My solution below differs, but still achieves best possible solution!
+    O(n) time and O(1) space.
     """
     def compress(self, chars: List[str]) -> int:
-        # Base Case - len(chars) == 1 -> return 1
-        if len(chars) == 1:
-            return 1
+        count = 1  # Use count to count have many repeating characters
+        index = 1  # Use index for updating the chars array
+        prev = chars[0]
+        for char in chars[1:]:
 
-        # Two pointer solution. Traverse with right pointer.
-        # Bring left pointer when there is a new character
-        string = ''
-        left = 0
-        # As you move right, keep checking the previous element to see if it's the same character
-        for right in range(len(chars)):
-            # Check final index to see if it's the same as the previous index.
-            # When same, traverse till end
-            # FINAL INDEX CHECK MUST BE BEFORE THE GENERAL CASE. Otherwise this final index check will never be reached.
-            if right == len(chars) - 1 and chars[right] == chars[right-1]:
-                count = 0
-                while left < right:
-                    left += 1
-                    count += 1
-                string += chars[right]
-                string += str(count + 1)
-                continue
-            # When different, just add character
-            elif right == len(chars) - 1 and chars[right] != chars[right-1]:
-                count = 0
-                while left < right:
-                    left += 1
-                    count += 1
-                string += chars[right - 1]
+            # Same character, add count
+            if char == prev:
+                count += 1
+
+            # Different character, reset count to 1
+            if char != prev:
+                # Depending on how many digits, will determine how many iterations to pass along with the number
+                # of characters to replace with each digit
+                # ex: count == 120 -> "1", "2", "0", skip i (3 times)
                 if count > 1:
-                    string += str(count)
-                string += chars[right]
-                continue
+                    for num in str(count):
+                        chars[index] = num
+                        index += 1
 
+                count = 1  # Reset count
 
-            # All other indices, check if first and previous index are the same.
-            if right > 0 and chars[right] == chars[right-1]:
-                continue
-            elif right > 0 and chars[right] != chars[right - 1]:
-                count = 0
-                # Traverse left pointer and count until chars[left] == chars[right]
-                while chars[left] != chars[right]:
-                    left += 1
-                    count += 1
-                string += chars[right - 1]
-                if count > 1:
-                    string += str(count)
+                # Since different character is found, we need to update the next index with that new character.
+                # Do not forget to traverse everytime you update an index in the array.
+                chars[index] = char
+                index += 1
+            prev = char
 
-        # Need to pop the rest of the chars elements:
-        for i in range(len(string)):
-            print(string[i])
-            chars[i] = string[i]
-        for i in range(len(string), len(chars)):
+        # The way this algorithm works is it checks for a difference between current and previous character.
+        # So you need to treat the end as a different character and run this count loop one more time to add
+        # the number to the chars array.
+        if count > 1:
+            for num in str(count):
+                chars[index] = num
+                index += 1
+
+        # Finally, the remainder of the char array can be trimmed out.
+        for i in range(index, len(chars)):
             chars.pop()
-        return len(string)
 
+        # Return the total length as the result
+        return len(chars)
 if __name__ == '__main__':
     print(Solution().compress(chars=["a","a","v"]))
 

@@ -28,7 +28,53 @@ class Solution:
         """
         https://www.youtube.com/watch?v=BJnMZNwUk1M
         """
-        return
+        res = []
+
+        # Base Case - single row
+        if len(matrix) == 1:
+            print(matrix)
+            return matrix[0]
+
+        # Base Case - single column
+        if len(matrix[0]) == 1:
+            for i in range(len(matrix)):
+                res.append(matrix[i][0])
+            return res
+
+        # if len(matrix) == 1:
+        #     return matrix[0]
+
+        top = 0
+        bot = len(matrix) - 1
+        left = 0
+        right = len(matrix[0]) - 1
+
+        while top <= bot and left <= right:
+            # top side: i = left,right
+            for i in range(left, right + 1):
+                res.append(matrix[top][i])
+            top += 1
+
+            # right side: i = top,bot
+            for i in range(top, bot + 1):
+                res.append(matrix[i][right])
+            right -= 1
+
+            # bot side: i = right,left
+            if top <= bot:
+                for i in reversed(range(left, right + 1)):
+                    res.append(matrix[bot][i])
+                    print(i, res)
+
+                bot -= 1
+
+            # left side: i = bot,top
+            if left <= right:
+                for i in reversed(range(top, bot + 1)):
+                    res.append(matrix[i][left])
+
+                left += 1
+        return res
 
     def spiralOrderEugene(self, matrix):  # Hash Table (Two-pass)
 
@@ -79,7 +125,7 @@ if __name__ == '__main__':
               [9],
               [6]]
     matrix4 = []
-    print("Case 1: 4x4: {}".format(Solution().spiralOrderEugene(matrix1)))
-    print("Case 2: 3x5: {}".format(Solution().spiralOrderEugene(matrix2)))
-    print("Case 3: 3x1: {}".format(Solution().spiralOrderEugene(matrix3)))
-    print("Case 4: 0x0: {}".format(Solution().spiralOrderEugene(matrix4)))
+    print("Case 1: 4x4: {}".format(Solution().spiralOrder(matrix1)))
+    print("Case 2: 3x5: {}".format(Solution().spiralOrder(matrix2)))
+    print("Case 3: 3x1: {}".format(Solution().spiralOrder(matrix3)))
+    print("Case 4: 0x0: {}".format(Solution().spiralOrder(matrix4)))

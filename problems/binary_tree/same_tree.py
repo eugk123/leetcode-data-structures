@@ -18,7 +18,7 @@ class Solution:
             if not p and not q:
                 return True
 
-            # Try to find all possible broken cases
+            # Try to find all possible failure cases. That way we can continue to traverse both trees!
             if not p and q:
                 return False
             if not q and p:

@@ -124,4 +124,4 @@ class Solution:
             string_list.pop()  # Backtrack and revert changes -> Removes previous letter (This allows us to try other options.)
 
 if __name__ == '__main__':
-    print(Solution().letterCombinations("23"))
+    print(Solution().letterCombinationsChar("23"))

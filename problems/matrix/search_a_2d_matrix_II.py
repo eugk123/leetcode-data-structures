@@ -4,34 +4,35 @@ https://leetcode.com/problems/search-a-2d-matrix-ii
 from typing import List
 class Solution:
     """
-    Use DFS - make sure to use visited matrix
+    Do not use DFS. This will traverse through the entire matrix O(m*n) time.
+
+    Do not use binary search. This will require performing it at every row or column
+    resulting in O(n log m) time
+
+    Use process of elimination. Simply work from top right corner.
+    When m[i][j] < target, move left
+    When m[i][j] > target, move down.
+    When target is found, return True
+    When out of bounds return False
     """
     def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
-        seen = dict()
+        i = 0
+        j = len(matrix[0]) - 1
 
-        def dfs(seen, i, j):
-            # End when out of bounds
-            if i < 0 or j < 0 or i >= len(matrix) or j >= len(matrix[0]):
-                return
+        while i <= len(matrix) - 1 and j >= 0:
+            # When m[i][j] > target, move down.
+            if matrix[i][j] > target:
+                j -= 1
 
-            # End if seen. Need to use this tuple arrangement because we can have duplicate nubmers in matrix
-            if seen.get((i, j)) == 1:
-                return
+            # When m[i][j] < target, move left
+            elif matrix[i][j] < target:
+                i += 1
 
-            # End target is reached
-            if matrix[i][j] == target:
+            # When target is found, return True
+            else:
                 return True
 
-            seen[(i, j)] = 1
-
-            # Traverse right and down throughout the matrix
-            return dfs(seen, i + 1, j) or dfs(seen, i, j + 1)
-
-        if dfs(seen, 0, 0) is True:
-            return True
         return False
-
-
 
 
 if __name__ == '__main__':

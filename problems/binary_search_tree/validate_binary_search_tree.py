@@ -9,6 +9,7 @@ class Solution:
             if not node:
                 return
 
+            # Do not use "not" because the previous condition will trigger this condition.
             if dfs_in_order(node.left) is False:
                 return False
 
@@ -25,6 +26,7 @@ class Solution:
 
             return True
 
+        # Integers are not mutable. Therefore, needs to be instantiated outside.
         self.prev = -math.inf
         return dfs_in_order(root)
 
