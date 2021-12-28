@@ -60,11 +60,12 @@ class Solution:
         combinations = []
 
         # Take all combinations of input digits from left to right (no reverse)
-        def dfs(index, current):
+        # index -> current index, combination -> current combination
+        def dfs(index, combination):
 
             # When index is equal len(digits), we know we've reached the end
             if index == len(digits):
-                combinations.append(current)
+                combinations.append(combination)
                 return
 
             # Grab current digit and set of letters.
@@ -75,7 +76,7 @@ class Solution:
             for letter in letters:
                 # No need to update the string by removing the letter because strings are immutable.
                 # This means in the next recursive call using a different letter, the old state will not be saved!
-                dfs(index + 1, current + letter)
+                dfs(index + 1, combination + letter)
 
         if digits == "":
             return []

@@ -10,14 +10,15 @@ class Solution:
     The approach is to flood from both oceans. The condition is to have the prev value <= current value.
 
     Simply take two different sets. Perform DFS from each side to populate both sets. Take the intersection of both sets.
-
     
-    Time Complexity: since we keep a visited set for each ocean, we only visit a cell if it is not visited before.
+    Time Complexity: O(mn)
+    since we keep a visited set for each ocean, we only visit a cell if it is not visited before.
     For each ocean, the worst case is mn thus totally O(mn)
 
-    Space Complexity: O(2mn + h) = O(mn).
+    Space Complexity: O(mn)
     For each DFS we need O(h) space used by the system stack, where h is the maximum depth of the recursion.
-    In the worst case, O(h) = O(m*n). Each visited set can have at maximum all cells from the matrix so O(mn). Two ocean means O(2mn).
+    In the worst case, O(h) = O(m*n) such that the grid map is filled with lands where DFS goes by M×N deep.
+    Each visited set can have at maximum all cells from the matrix so O(mn). Two ocean means O(2mn).
     """
     def pacificAtlantic(self, matrix: List[List[int]]) -> List[List[int]]:
         # Check for an empty graph.

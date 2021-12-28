@@ -79,5 +79,6 @@ class Solution:
             res.append(map.get(key))
 
         return res
+        
 if __name__ == '__main__':
     print(Solution().groupAnagramsOptimized(["bad", "adb", "pee", "eep"]))

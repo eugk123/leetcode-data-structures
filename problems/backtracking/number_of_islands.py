@@ -31,6 +31,15 @@ from typing import List
 class Solution:
     """
     https://www.youtube.com/watch?v=nNGSZdx6F3M&list=PLujIAthk_iiO7r03Rl4pUnjFpdHjdjDwy&t=485s
+    
+    Time Complexity: O(mn)
+    Since we only visit a cell if it is not visited before, the worst case is mn thus totally O(mn).
+
+    Space Complexity: O(mn)
+    For each DFS we need O(h) space used by the system stack, where h is the maximum depth of the recursion.
+    In the worst case, O(h) = O(m*n) such that the grid map is filled with lands where DFS goes by M×N deep.
+    
+    By marking visited positions, we only visit each position once with this algorithm. The resulting space is also the same size of the input m*n matrix.
     """
     def numIslands(self, grid: List[List[str]]) -> int:
         def sink_dfs(i, j):

@@ -6,49 +6,44 @@ class Solution:
     https://www.youtube.com/watch?v=y2BD4MJqV20
     """
     def longestPalindrome(self, s: str) -> str:
-        # Base Case: len = 1
-        if len(s) == 1:
-            return s
+        """
+        two pointer from center as you go left to right of the input
+        Perform for both even and odd length palindromes
+        Store all palindrome substrings in an array and also store max length
+        
+        Once you've reached the end, look for palindrome of max length and return that palindrome
+        """
+        # Two pointer expand from center when letters are not the same
+        def checkPalindrome(left, right):
+            if left >= 0 and right < len(s):            
+                while s[left] == s[right]:
+                    # Compute length to check if this substring is of max length
+                    length = right - left + 1
 
-        max_length = 0  # To grab longest palindrome
-        store_right = [0]
-        store_left = [0]
-
-        # Iterate through string
+                    # Update max indices and max length global variables
+                    if length > self.max_length:
+                        self.max_length = length
+                        self.max_indices = (left, right)
+                    left -= 1
+                    right += 1
+                    if left < 0 or right >= len(s):
+                        break
+                        
+        if s == "":
+            return ""
+        
+        self.max_indices = (0, 0)
+        self.max_length = 0
+        
         for i in range(len(s)):
-            # We are starting from 2nd index -> i > 0
-            if i > 0:
-                # Case 1: duplicate centers
-                right, left = i, i - 1
-                while s[right] == s[left]:
-                    if right - left > max_length:
-                        store_right[0] = right
-                        store_left[0] = left
-                        max_length = right - left
-                    right += 1
-                    left -= 1
-                    if left < 0 or right > len(s) - 1:  # This breaks the while loop when indices go out of bounds
-                        break
-
-                # Case 2: unique center
-                right, left = i, i
-                while s[right] == s[left]:
-                    if right - left > max_length:
-                        store_right[0] = right
-                        store_left[0] = left
-                        max_length = right - left
-                    right += 1
-                    left -= 1
-                    if left < 0 or right > len(s) - 1:
-                        break
-
-        res = ''
-        for i in range(store_left[0], store_right[0] + 1):
-            res += s[i]
-
-        return res
-
-        # Upon completion, get palindrome using the stored right and left indices
+            # odd palindromes
+            checkPalindrome(i, i)
+            
+            # even palindromes
+            checkPalindrome(i, i+1)
+                                
+        left, right = self.max_indices
+        return s[left:right+1]
 
 
 if __name__ == '__main__':
