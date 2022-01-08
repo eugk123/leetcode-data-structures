@@ -1,15 +1,17 @@
+"""
+https://leetcode.com/problems/contains-duplicate/
+
+Your function should return true if any value appears at least twice in the array, and it should return false if
+every element is distinct.
+
+Example:
+Input: [1,2,3,1]
+Output: true
+"""
 def containsDuplicate(nums):  # Heapsort Algorithm
     """
-    https://leetcode.com/problems/contains-duplicate/
+    Heapsort - Space efficient
 
-    Your function should return true if any value appears at least twice in the array, and it should return false if
-    every element is distinct.
-
-    Example:
-    Input: [1,2,3,1]
-    Output: true
-
-    Complexity:
     Time Complexity: O(n logn). This approach employs sorting algorithm. Since comparison sorting algorithm like
     heapsort is known to provide O(n logn) worst-case performance, sorting is often a good preprocessing step.
     After sorting, we can sweep the sorted array to find if there are any two consecutive duplicate elements.
@@ -25,12 +27,17 @@ def containsDuplicate(nums):  # Heapsort Algorithm
     return False  # Otherwise return false
 
 def containsDuplicates_HashSet(nums):  # Hash Set
-    duplicates = set()
-    for num in nums:
-        duplicates.add(num)
-    if len(nums) > len(duplicates):
-        return True
-    return False
+    """
+    Hashset - Time efficient
+
+    Time Complexity: O(n)
+    Space Complexity: O(n)
+    """
+    uniqueNums = set(nums)
+
+    if len(uniqueNums) == len(nums):
+        return False
+    return True
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':

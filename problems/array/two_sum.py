@@ -30,6 +30,26 @@ def twoSum(nums, target):  # Hash Table (Two-pass)
         if complement in map and map.get(complement) != i:
             return [i, map[complement]]
 
+def twoSumEugene(nums, target):  # Hash Table (Two-pass)        
+    # populate hash map that provides constant time reads
+    number_to_index = {}
+    for i in range(len(nums)):
+        number_to_index[nums[i]] = i
+    
+    # at each iteration, subtract nums[i] from target, and search for that value in map
+    # searching for a value in map is constant time
+    for i in range(len(nums)):
+        second_number = target - nums[i]
+        
+        if second_number in number_to_index:
+            
+            # Edge case [3, 2, 4] target=6 -> takes index 0 twice.
+            # Need to make sure we are using two different indices. 
+            if i != number_to_index[second_number]:
+                
+                return [i, number_to_index[second_number]]
+        
+        
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
