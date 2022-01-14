@@ -1,10 +1,15 @@
 """
 https://leetcode.com/problems/design-linked-list/submissions/
+
+Leetcode problem is sufficient here. 
+
+Design: Node
+Design operations: get(index), addAtHead(val), addAtTail(val), addAtIndex(index, val), deleteAtIndex(index)
 """
 class Node:
-    def __init__(self, val):
+    def __init__(self, val, next=None):
         self.val = val
-        self.next = None
+        self.next = next
 
 
 class MyLinkedList:

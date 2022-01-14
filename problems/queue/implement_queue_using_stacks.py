@@ -1,3 +1,6 @@
+"""
+https://leetcode.com/problems/implement-queue-using-stacks/
+"""
 class MyQueue:
     def __init__(self):
         """

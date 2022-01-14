@@ -17,13 +17,11 @@ Explanation: The answer is "b", with the length of 1.
 :return:
 """
 class Solution:
-    def lengthOfLongestSubstring_SlidingWindow(self, s: str) -> int:  # Sliding Window
+    def lengthOfLongestSubstring(self, s: str) -> int:  # Sliding Window
         """
-        Intuition: Check all the substring one by one to see if it has no duplicate character.
+        Sliding Window
 
-        Algorithm: A sliding window is an abstract concept commonly used in array/string problems. A window is a range
-        of elements in the array/string which usually defined by the start and end indices, i.e. [i,j) (left-closed,
-        right-open). A sliding window is a window "slides" its two boundaries to the certain direction.
+        Intuition: Check all the substring one by one to see if it has no duplicate character.
 
         For this problem, We use HashSet to store the characters in current window [i,j). Then we slide the index j to the
         right. If it is not in the HashSet, we slide j further. Doing so until s[j] is already in the HashSet. At this point,
@@ -54,6 +52,41 @@ class Solution:
 
         return max_length
 
+    def lengthOfLongestSubstring_Eugene(self, s: str) -> int:  # Sliding Window
+        """
+        abcabcbb
+        l r       abc   Traverse right pointer until all unique letters are added.
+        l  r      abc   At this point, we right pointer is at a duplicate letter, so we enter the 'else' condition to start traversing the left pointer
+         l r      bca   We traverse the left pointer until right pointer letter is removed from set
+          l  r     cab
+           l  r    abc
+             l r   cb
+               l   b        
+        """
+        max_length = 0
+        duplicates = set()
+        r = l = 0
+        
+        if s == "":
+            return 0
+
+        for r in range(len(s)): 
+            # traverse right pointer until all unique letters are added
+            if s[r] not in duplicates:
+            
+                # Add right pointer letters to set
+                duplicates.add(s[r])
+            
+            # when right pointer letter already exists, we start traversing left pointer until that right pointer letter is removed from set
+            else:                
+                duplicates.remove(s[l])
+                l += 1
+                
+            # Update max every iteration
+            max_length = max(max_length, len(duplicates))
+
+        return max_length
+
 if __name__ == '__main__':
-    print(Solution().lengthOfLongestSubstring_SlidingWindow("abbcdeefghj"))
+    print(Solution().lengthOfLongestSubstring("abbcdeefghj"))
 
