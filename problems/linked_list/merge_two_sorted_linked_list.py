@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/merge-two-sorted-lists/submissions/
 """
-from node.node_list import ListNode
+from node_list import ListNode
 class Solution:
     def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
         dummy = ListNode(0)

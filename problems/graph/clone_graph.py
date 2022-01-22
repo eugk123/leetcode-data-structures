@@ -20,7 +20,7 @@ Test case format:
 :param node:
 :return:
 """
-from node.node_graph import Node
+from node_graph import Node
 class Solution:
     """
     https://www.youtube.com/watch?v=f2EfGComRKM&t

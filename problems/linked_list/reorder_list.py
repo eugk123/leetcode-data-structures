@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/reorder-list/
 """
-from node.node_list import ListNode
+from node_list import ListNode
 class Solution:
     def reorderList(self, head: ListNode) -> None:
         """

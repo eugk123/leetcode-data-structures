@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/add-two-numbers-ii/
 """
-from node.node_list import ListNode
+from node_list import ListNode
 class Solution:
     def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
         # Summation of two lists are done with it's ends aligned. So work from the end and add.

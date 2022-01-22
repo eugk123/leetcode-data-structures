@@ -1,4 +1,4 @@
-from node.node_list import ListNode
+from node_list import ListNode
 class Solution:
     def removeNthFromEnd(self, head, n): # Two Pass Algo
         """

@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/linked-list-cycle
+https://leetcode.com/problems/copy-list-with-random-pointer/
 """
 from node_list import ListNode
 class Solution:
@@ -16,3 +16,10 @@ class Solution:
                     return True
         except:
             return False
+
+if __name__ == "__main__":
+
+    node = ListNode(1)
+    node.next = ListNode(2)
+
+    print(node.val)

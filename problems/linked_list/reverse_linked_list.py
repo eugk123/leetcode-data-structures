@@ -1,4 +1,4 @@
-from node.node_list import ListNode
+from node_list import ListNode
 class Solution:
     """
     https://leetcode.com/problems/reverse-linked-list
