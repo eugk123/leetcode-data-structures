@@ -3,50 +3,58 @@ https://leetcode.com/problems/valid-palindrome-ii/
 """
 class Solution:
     """
-    My solution does multiple passes by using the isPalindrome method.
-
+    Two Pass - Linear Time Constant Space
     Not the most optimal but still O(n) time and O(1) space.
+
+    Trick is to try left only shifts on one pass and right only shifts on another pass.
+    Count the number of shifts. There should only be at most 1 shift on one of those passes. If so, True. Otherwise, False.
+    
+    baaa
+    l  r  shift left, then good
+    abcbba
+      lr  shift left, then good
+    dffad
+     l r  shift right, then good
+    abcbbba
+      l r shift right, then good
+
+    Time O(n)
+    Space O(1)
     """
     def validPalindrome(self, s: str) -> bool:
-        def isPalindrome(s):
-            left = 0
-            right = len(s) - 1
-
-            while left <= right:
-                # If the char is not a alpha character, traverse
-                if not s[left].isalnum():
-                    left += 1
-                    continue
-                if not s[right].isalnum():
-                    right -= 1
-                    continue
-
-                # If left char == right char, traverse both
-                if s[left].lower() == s[right].lower():
-                    left += 1
-                    right -= 1
-                else:
-                    return False
-            return True
-
-        # Start at both ends. Work inwards.
-        left, right = 0, len(s) - 1
-
-        skip_count = 0
-        while left < right:
-
-            # If equal, traverse inwards
+        # Shift in one direction when not equal. Do this both ways      
+        left_shifts = 0
+        right_shifts = 0
+        
+        # Try left
+        left = 0
+        right = len(s) - 1
+        while left < right:            
+            if left_shifts > 1:
+                break
+                
             if s[left] == s[right]:
                 left += 1
                 right -= 1
-
-            # If not equal
             else:
-                # Try both
-                # (1) deleting left index then check if palindrome
-                # (2) deleting right index then check if palindrome
-                if not isPalindrome(s[0:left] + s[left + 1:]) and not isPalindrome(s[0:right] + s[right + 1:]):
-                    return False
-                else:
-                    return True
+                left += 1
+                left_shifts += 1
+                    
+        # Try right
+        left = 0
+        right = len(s) - 1
+        while left < right:
+            if right_shifts > 1:
+                break
+                
+            if s[left] == s[right]:
+                left += 1
+                right -= 1
+            else:
+                right -= 1
+                right_shifts += 1
+                
+        # print(right_shifts, left_shifts)
+        if right_shifts > 1 and left_shifts > 1:
+            return False
         return True

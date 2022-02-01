@@ -20,6 +20,43 @@ Output - True
 """
 def isOneEditAway(s1: str, s2: str) -> bool:
     """
+    Two Pointer two pass. Iterate using shorter word to avoid index error.
+    1) Left to right
+    2) Right to left
+
+    Count when letters are different
+
+    If both counts are greater than 1, then return False
+    Otherwise return True.
+
+    If difference in length > 2, then return False
+
+    ake     rake
+    i->     i->     count=3
+    <-i      <-i    count=0
+    """
+    if abs(len(s1) - len(s2)) > 1:
+        return False
+    if len(s1) < len(s2):
+        short = s1
+        long = s2
+    else:
+        short = s2
+        long = s2
+    
+    count = 0
+    r_count = 0
+    for i in range(len(short)):
+        if s1[i] != s2[i]:
+            count += 1
+        if s1[len(s1) - i - 1] != s2[len(s2) - i - 1]:
+            r_count += 1
+    
+    if count > 1 and r_count > 1:
+        return False
+    return True
+def isOneEditAwayOld(s1: str, s2: str) -> bool:
+    """
     Two Pointer starting at beginning of both inputs.
 
     Key here is considering the length of s1 and s2. When we run into different letters, we increment the index with the longer string, otherwise we increment together if strings are of equal length.       
