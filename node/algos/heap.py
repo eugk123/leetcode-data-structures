@@ -8,11 +8,11 @@ import heapq
 
 # heapify(x)
 # Transform given list x in to a min-heap, in-place, in linear time.
-extList = [15, 2, 5, 11, 7, 3, 9, 1, 6, 8]
+nums = [15, 2, 5, 11, 7, 3, 9, 1, 6, 8]
 print('\nheapify() example:')
-print('Before :', extList)
-heapq.heapify(extList)
-print('After  :', extList)
+print('Before :', nums)
+heapq.heapify(nums)
+print('After  :', nums)
 
 # heappush(heap, e)
 # Adds an element to the heap maintaining heap property.
@@ -65,3 +65,21 @@ print('After  :', minHeap)
 # Returns list of n largest elements after sorting given iterable by key. Equivalent to sorted(iterable, key=key, reverse=True)[:n]
 n1 = [1, 2, 3, 6, 7, 5, 9, 11, 15, 8]
 print(heapq.nlargest(3, n1))
+
+# get k most frequent numbers
+frequency_map = dict()
+nums = [4, 1, 2, 4, 4, 6, 7, 8, 4, 3, 8, 8]
+for num in nums:
+    if frequency_map.get(num) is None:
+        frequency_map[num] = 1
+    else:
+        frequency_map[num] += 1
+
+max_heap = [(-value, key) for key, value in frequency_map.items()]
+print(max_heap)
+heapq.heapify(max_heap)
+print(max_heap)
+
+
+# min_heap = [(value, key) for key, value in map.items()]
+# heapq.heapify(min_heap)

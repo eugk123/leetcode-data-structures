@@ -12,7 +12,55 @@ class Solution:
     2. Set indices for a Sorted Array
     3. Sorted Array -> Find target
     """
+    def searchEugene(self, nums: List[int], target: int) -> int:
+        def binarySearch(l, r, nums):
+            while l <= r:
+                m = l + int((r - l)/2)
+                if nums[m] == target:
+                    return m
 
+                if nums[m] < target:
+                    l = m + 1
+                else:
+                    r = m - 1
+            return -1
+        
+        # Base case - size 1
+        if len(nums) == 1:
+            if target == nums[0]:
+                return 0
+            else:
+                return -1
+            
+        # Edge case - If not rotated do simple bs
+        l, r = 0, len(nums) - 1
+        if nums[l] < nums[r]:
+            # if out of bounds, return -1
+            if target < nums[l] or target > nums[r]:
+                return -1
+
+            return binarySearch(0, len(nums) - 1, nums)
+
+        # If rotated, do modified bs, to find the midpoint, which is between m and m+1
+        # We co
+        while l <= r:
+            m = l + int((r - l)/2)
+            if nums[m] > nums[m + 1]:
+                break
+
+            if nums[m] > nums[0]:
+                l = m + 1
+            else:
+                r = m   # the inflection point cannot be found if m-1 is used here for certain cases (difficult to find this)
+    
+        # Figure out where target lies. Before m or after m+1.
+        if nums[0] <= target <= nums[m]:
+            return binarySearch(0, m, nums)
+        elif nums[m+1] <= target <= nums[len(nums) - 1]:
+            return binarySearch(m + 1, len(nums)-1, nums)
+        else:
+            return -1
+    
     def search(self, nums: List[int], target: int) -> int:
         # The only base case is len of 1!
         if len(nums) == 1 and target == nums[0]:

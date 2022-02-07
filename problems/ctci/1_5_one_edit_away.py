@@ -20,7 +20,7 @@ Output - True
 """
 def isOneEditAway(s1: str, s2: str) -> bool:
     """
-    Two Pointer two pass. Iterate using shorter word to avoid index error.
+    Two Pointer. Iterate using shorter word to avoid index error.
     1) Left to right
     2) Right to left
 
@@ -34,15 +34,16 @@ def isOneEditAway(s1: str, s2: str) -> bool:
     ake     rake
     i->     i->     count=3
     <-i      <-i    count=0
+
+    Time O(n)
+    Space O(1)
     """
     if abs(len(s1) - len(s2)) > 1:
         return False
     if len(s1) < len(s2):
         short = s1
-        long = s2
     else:
         short = s2
-        long = s2
     
     count = 0
     r_count = 0

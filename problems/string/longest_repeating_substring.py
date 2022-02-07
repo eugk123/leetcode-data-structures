@@ -1,7 +1,5 @@
 """
-
-
-https://www.youtube.com/watch?v=Tf_mD59DLf0
+https://leetcode.com/problems/longest-repeating-substring/
 """
 class Solution:
     """

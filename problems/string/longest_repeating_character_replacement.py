@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/longest-repeating-character-replacemente
+https://leetcode.com/problems/longest-repeating-character-replacement
 https://leetcode.com/problems/longest-repeating-character-replacement/discuss/91271/Java-12-lines-O(n)-sliding-window-solution-with-explanation
 
 Given a string s that consists of only uppercase English letters, you can perform at most k operations on that string.
