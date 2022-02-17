@@ -1,4 +1,7 @@
 """
+Heap aka priority queue comes in two forms. Min heap and max heap.
+
+A min heap 
 Use heapq module via "import heapq"
 
 This file is just a quick tutorial on how heapq module works

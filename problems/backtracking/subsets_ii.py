@@ -48,6 +48,10 @@ class Solution():
             result.append(subset)
             
             for i in range(index, len(nums)):
+                # notice that we don't include subset where (1) the current val same as previous val and (2) the current index "i" differs from the previous index "index".
+                if i > 0:
+                    if nums[i-1] == nums[i] and i != index:
+                        continue
                 backtracking(i + 1, subset + [nums[i]])    
         
         result = []
@@ -56,4 +60,4 @@ class Solution():
 
 
 if __name__ == '__main__':
-    print(Solution().subsetsWithDup([1,2,3]))
+    print(Solution().subsetsWithDup([1,2,2]))

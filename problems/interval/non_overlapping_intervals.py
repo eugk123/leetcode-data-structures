@@ -3,11 +3,43 @@ https://leetcode.com/problems/non-overlapping-intervals/
 """
 from typing import List
 class Solution:
-    """
-    Sort then check for overlaps between current and previous.
-    """
+    def eraseOverlapIntervalsEugene(self, intervals: List[List[int]]) -> int:
+        """
+        Sort then check for overlaps between current and previous.
 
-    class Solution:
+        Remove longer one
+
+        Try in reversed
+        """
+        intervals.sort()
+        
+        # Left to right
+        left_count = 0
+        prev = intervals[0]
+        for i in range(1, len(intervals)):
+            curr = intervals[i]
+            
+            # if they overlap, count and do not update prev
+            if prev[1] > curr[0]:
+                left_count += 1
+                continue
+
+            prev = curr
+        
+        # Right to left
+        right_count = 0
+        prev = intervals[len(intervals)-1]
+        for i in reversed(range(len(intervals) - 1)):
+            curr = intervals[i]
+            
+            # if they overlap, count and do not update prev
+            if prev[0] < curr[1]:
+                right_count += 1
+                continue
+
+            prev = curr
+        
+        return min(left_count, right_count)
         def eraseOverlapIntervals(self, intervals: List[List[int]]) -> int:
 
             # First sort the intervals:

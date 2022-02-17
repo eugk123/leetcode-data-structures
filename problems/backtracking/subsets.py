@@ -40,7 +40,7 @@ class Solution():
             subsets.append(subset)
     
             for i in range(index, len(nums)):
-                dfs(i + 1, subset + [nums[i]])
+                backtracking(i + 1, subset + [nums[i]])
         
         backtracking(0, [])
         return subsets

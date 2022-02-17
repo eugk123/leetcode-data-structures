@@ -73,4 +73,4 @@ class Solution():
         dfs([])
         return result
 if __name__ == '__main__':
-    print(Solution().permute([1,2,3]))
+    print(Solution().permuteVisited([1,2,3]))
