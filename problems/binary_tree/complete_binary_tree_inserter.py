@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/complete-binary-tree-inserter/
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class CBTInserter:
     """
     https://www.youtube.com/watch?v=GaF-UdKklRQ

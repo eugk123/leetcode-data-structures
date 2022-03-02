@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/merge-k-sorted-lists
 """
-from node_list import ListNode
+from node.node_list import ListNode
 from typing import List
 from math import ceil
 class Solution:

@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/odd-even-linked-list/
 """
-from node_list import ListNode
+from node.node_list import ListNode
 class Solution:
     """
     The problem constraints the nodes to be odd->even->odd->even.

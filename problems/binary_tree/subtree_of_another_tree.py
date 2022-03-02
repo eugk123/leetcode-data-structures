@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/subtree-of-another-tree/
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class Solution:
     """
     Use PreOrder (DFS) traversal

@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/palindrome-linked-list/
 """
-from node_list import ListNode
+from node.node_list import ListNode
 class Solution:
     """
     Easy way is to use a list to determine if linked list is palindrome.

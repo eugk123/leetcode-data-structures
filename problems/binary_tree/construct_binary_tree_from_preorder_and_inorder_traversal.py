@@ -1,18 +1,102 @@
 """
 https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 from typing import List
 class Solution:
-    """
-    https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/34555/The-iterative-solution-is-easier-than-you-think!
-    https://jamboard.google.com/d/19j1pvZjKI2gQOi_DhS9EQK35ITF-JxsP62r1STZo3Tc/viewer
-    
-    Inorder gives us information on what is on the left and right at any given node.
-    By definition, the number is in between left and right subtrees.
-    """
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        """
+        https://www.youtube.com/watch?v=ihj4IQGZ2zc
 
-    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        Remember, first node of preorder is going to be the root.
+        The inorder tells you from the root node what makes up the left and right subtree. 
+        So we attain the mid index for inorder array via preorder[0] value.
+
+        Notice that we can slice arrays as follows: 
+        preorder: root|left|right
+        inorder:  left|root|right
+
+        Ex: 
+        preorder = [1,2,4,5,3,6,9,7] -> root = preorder[0] = 1
+        inorder =  [4,2,5,1,6,9,3,7] -> mid = inorder.index(preorder[0]) = 3
+        
+        preorder = [1|2,4,5|3,6,9,7]    root|left|right
+        inorder =  [4,2,5|1|6,9,3,7]    left|root|right
+
+        With array slicing, we send a piece of preorder and inorder recursively.
+
+        Detailed example walkthrough: 
+        preorder = [1,2,4,5,3,6,9,7] -> root = preorder[0] = 1
+        inorder =  [4,2,5,1,6,9,3,7] -> mid = inorder.index(preorder[0]) = 3
+        1 (ROOT)
+                1
+            /       \
+        p[2,4,5]  p[3,6,9,7]
+        i[4,2,5]  i[6,9,3,7]
+
+        1->LEFT                         1->RIGHT
+        preorder[1:mid+1] = [2,4,5]     preorder[mid+1:] = [3,6,9,7]
+        inorder[mid+1:] = [4,2,5]       inorder[mid+1:] = [6,9,3,7]
+
+        1->LEFT (ROOT)
+        preorder = [2,4,5] -> root = preorder[0] = 2     
+        inorder = [4,2,5] -> mid = inorder.index(2) = 1
+
+                    1
+                /       \
+            2       p[3,6,9,7]
+            /   \     i[6,9,3,7]
+        p[4]   p[5]
+        i[4]   i[5]
+
+        2->LEFT                         2->RIGHT
+        preorder[1:1+1] = [4]           preorder[1+1:] = [5]
+        inorder[1:] = [4]           inorder[1+1:] = [5]
+
+        2->LEFT (ROOT)
+        preorder = [4] -> root = 4
+        inorder = [4] -> mid = 0
+
+                    1
+                /       \
+            2       p[3,6,9,7]
+            /   \     i[6,9,3,7]
+          4    p[5]
+        /  \   i[5]
+        x  x 
+
+        preorder[0:1] = []
+        inorder[0:] = []
+        if not preorder or not inorder, return None
+
+        1->RIGHT
+        preorder = [3,6,9,7]
+        inorder = [6,9,3,7]
+
+        you get the idea from here.
+        """
+        # print(preorder, inorder)
+        if not preorder or not inorder:
+            return None
+        
+        root = TreeNode(preorder[0])
+        mid = inorder.index(preorder[0])
+        
+        # preorder = [3,9,20,15,7] -> mid = 1
+        # left = 1-1    right = 2->4 
+        root.left = self.buildTree(preorder[1:mid+1],inorder[:mid])
+        root.right = self.buildTree(preorder[mid+1:],inorder[mid+1:])
+        
+        return root
+
+    def buildTreeIterative(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        """
+        https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/discuss/34555/The-iterative-solution-is-easier-than-you-think!
+        https://jamboard.google.com/d/19j1pvZjKI2gQOi_DhS9EQK35ITF-JxsP62r1STZo3Tc/viewer
+        
+        Inorder gives us information on what is on the left and right at any given node.
+        By definition, the number is in between left and right subtrees.
+        """
         # construct hashmap mapping a value to its inorder index
         in_val_to_index = {}
         for i, val in enumerate(inorder):

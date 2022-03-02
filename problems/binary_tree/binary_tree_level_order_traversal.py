@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/binary-tree-level-order-traversal/
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 from collections import deque
 from typing import List
 class Solution:

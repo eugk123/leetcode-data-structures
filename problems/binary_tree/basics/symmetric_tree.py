@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/symmetric-tree/
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class Solution:
     def isSymmetric(self, root: TreeNode) -> bool:
         def dfs(left, right):

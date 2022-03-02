@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/rotate-list/
 """
-from node_list import ListNode
+from node.node_list import ListNode
 
 
 class Solution:

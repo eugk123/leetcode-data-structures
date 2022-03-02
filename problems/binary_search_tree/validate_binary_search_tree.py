@@ -2,7 +2,7 @@
 https://leetcode.com/problems/validate-binary-search-tree/
 """
 import math
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class Solution:
     def isValidBST(self, root: TreeNode) -> bool:
         def dfs_in_order(node):

@@ -1,80 +1,107 @@
 """
-https://leetcode.com/problems/n-queens/
-The n-queens puzzle is the problem of placing n queens on an n x n chessboard such that no two queens attack each other.
-
-Given an integer n, return all distinct solutions to the n-queens puzzle.
-
-Each solution contains a distinct board configuration of the n-queens' placement, where 'Q' and '.' both indicate a queen and an empty space, respectively.
-
-Example 1:
-Input: n = 4
-Output:
-[[".Q..",
-  "...Q",
-  "Q...",
-  "..Q."],
- ["..Q.",
-  "Q...",
-  "...Q",
-  ".Q.."]]
-Explanation: There exist two distinct solutions to the 4-queens puzzle as shown above
-
-Example 2:
-Input: n = 1
-Output: [["Q"]]
-
+https://leetcode.com/problems/n-queens
 """
 from typing import List
+class Solution:
+    """
+    Iterate through only first row from 0->3 and perform backtracking()
+        For every iteration, start with an empty matrix of size n by n. "x" denotes empty.
+    xxxx
+    xxxx
+    xxxx
+    xxxx
 
+    Backtracking equation will do the following:
+    1) Given i, j, mark horizontal and vertical and diagonal with periods (create helper method for this)
+        Then populate current[i][j] with "Q"
+        Count that queen. count += 1
+    Q...
+    ..xx
+    .x.x
+    .xx.
 
-class Solution():
-    def solveNQueens(self, n) -> List[List[str]]:
-        """
-        https://www.youtube.com/watch?v=nNGSZdx6F3M&list=PLujIAthk_iiO7r03Rl4pUnjFpdHjdjDwy&t=720s
-        :param n:
-        :return:
-        """
-        # Represent board as matrix of characters to place Queens when needed
-        board = [['.' for i in range(n)] for j in range(n)]
+    2) On the next row, recursively call using a copy.deepcopy(current) at any empty spot with "x"
+    This occurs at j = 2 and j = 3. So you can create a loop for j in range(n): backtrack(i, j, copy.deepcopy(current), count)
+    backtracking(i, 2, copy.deepcopy(current), count)
+    backtracking(i, 3, copy.deepcopy(current), count)
 
-        result = []  # Initialize result as empty array
+    3) Figure out some break conditions
+    a) if empty, populate queen:            if current[i][j] == "x":
+    b) if blocked ".", or populated "Q":    elif current[i][j] == "." or current[i][j] == "Q":
+    c) counted n queens, add to result:     if count == n:
+    """
+    def solveNQueens(self, n: int) -> List[List[str]]:
+        def compressResult(current):
+            result = []
+            for i in range(n):
+                result.append("".join(current[i]))
+            return result
+        def blockQueenSpaces(i, j, current):
+            # horizontal and vertical blocks
+            for index in range(n):          
+                current[i][index] = "."
+                current[index][j] = "."
 
-        # Call DFS traversing Column by Column. Starting at column 0.
-        self.dfs(board, 0, result)
+            
+            # diagonal blocks down-right    
+            row, col = i, j
+            for index in range(j, n):          
+                current[row][index] = "."
+                row += 1
+                if row == n:
+                    break
 
-        # Return result
-        return result
+            # diagonal blocks down-left /
+            row, col = i, j
+            for index in reversed(range(0, j + 1)):          
+                current[row][index] = "."
+                row += 1
+                if row == n:
+                    break
 
-    def dfs(self, board, colIndex, result):
-        # Terminating condition - to check if we reach the end of the board
-        if colIndex == len(board):
-            result.append(self.construct(board))
-            return
+            # diagonal blocks up-right /
+            row, col = i, j
+            for index in range(j, n):          
+                current[row][index] = "."
+                row -= 1
+                if row == -1:
+                    break
+            # diagonal blocks down-left /
+            row, col = i, j
+            for index in reversed(range(0, j + 1)):          
+                current[row][index] = "."
+                row -= 1
+                if row == -1:
+                    break
 
-        # In given column, we can put the queen in any row as long as we don't get in the way of other queens on the board
-        for i in range(len(board)):
-            if self.validate(board, i, colIndex):
-                board[i][colIndex] = 'Q'
-                self.dfs(board, colIndex + 1, result)
-                board[i][colIndex] = '.'
+        def backtracking(i, j, count, current):
+            # if empty, populate queen
+            if current[i][j] == "x":
+                # block all empty spaces in horizontal, vertically, and diagonally
+                # print(i, j, current)
+                blockQueenSpaces(i, j, current)
+                # populate queen
+                current[i][j] = "Q"
+                count += 1
+                
+            # if blocked ".", or populated "Q"
+            elif current[i][j] == "." or current[i][j] == "Q":
+                return
 
-    def validate(self, board, x, y):
-        # Goes through the whole board to see if any Queen lies horizontal or diagonal for the Queen you're about to place
-        for i in range(len(board)):
-            for j in range(y):
-                if board[i][j] == 'Q' and (x + j == y + i or x + y == i + j or x == i):
-                    return False
-        return True
+            # counted n queens
+            if count == n:
+                result = compressResult(current)
+                if result not in results:
+                    results.append(result)
+                return
+                        
+            for j in range(n):
+                backtracking(i + 1, j, count, copy.deepcopy(current))
+            
+        results = []
+        
+        for j in range(n):
+            empty = [["x"]*n for i in range(n)]
+            backtracking(0, j, 0, empty)
 
-
-    def construct(self, board):
-        # Constructs the result as List[String]
-        res = []
-        s = ""  # Initailize empty string
-        for i in range(len(board)):
-            res.append(s.join(board[i]))  # Convert row to string
-        return res
-
-
-if __name__ == '__main__':
-    print(Solution().solveNQueens(4))
+        return results

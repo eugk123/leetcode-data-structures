@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/linked-list-cycle-ii
 """
-from node_list import ListNode
+from node.node_list import ListNode
 class Solution:
     """
     Simply use a HashSet. Add to set if not seen. Otherwise, return curr

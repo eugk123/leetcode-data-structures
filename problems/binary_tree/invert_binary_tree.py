@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/invert-binary-tree
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 
 
 class Solution:

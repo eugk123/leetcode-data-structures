@@ -2,7 +2,7 @@
 https://leetcode.com/problems/binary-tree-postorder-traversal
 """
 from typing import List
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 import collections
 class Solution:
     def postorderTraversal(self, root: TreeNode) -> List[int]:

@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/maximum-depth-of-binary-tree
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 from collections import deque
 class Solution:
     def maxDepth(self, root):

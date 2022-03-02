@@ -2,7 +2,7 @@
 https://leetcode.com/problems/binary-tree-inorder-traversal
 """
 from typing import List
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class Solution:
     def inorderTraversal(self, root: TreeNode) -> List[int]:
         """

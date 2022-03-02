@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/add-two-numbers-ii/
 """
-from node_list import ListNode
+from node.node_list import ListNode
 class Solution:
     """
     https://www.youtube.com/watch?v=71NkQBIHxg8

@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/inorder-successor-in-bst
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class Solution:
     def inorderSuccessor(self, root: 'TreeNode', p: 'TreeNode') -> 'TreeNode':
         def dfs_in_order(node):

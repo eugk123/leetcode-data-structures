@@ -8,46 +8,80 @@ Note that the solution returns a List because there can be 2 root node.
 from typing import List
 class Solution:
     """
-    https://www.youtube.com/watch?v=a4hXpeHZ_-c&t=1247s
+    First collect all leaf nodes as initial queue. 
+    Level-order BFS Traversal.
+                        leaves
+    1---0---2           [1,2,5] 6
+        |
+        3---4---5
+    
+        0---3---4       [0,4]   3
+                        
+            3           [3]     1
+            
+                        leaves  remaining
+    0---1---2---4---6   [0,5,6] 7
+        |
+        3---5
+        
+        1---2---4       [4,3]   4
+        |
+        3
+        
+        1---2  result = [1,2]   2  
+
+    Time and Space O(N) where N is the number of nodes (or vertices)
     """
     def findMinHeightTrees(self, n: int, edges: List[List[int]]) -> List[int]:
-        adj = dict()
-
+        if not edges:
+            return [0]
+        if len(edges) == 1:
+            return [0,1]
+        
+        # Notice each node in adjacency list uses a set. This is crucial for finding the next inner leaf.
+        adj = {}
         for i in range(n):
-            adj[i] = []
-
+            adj[i] = set()
         for edge in edges:
-            adj.get(edge[0]).append(edge[1])
-            adj.get(edge[1]).append(edge[0])
-
-        # Initialize leaves array.
+            adj[edge[0]].add(edge[1])
+            adj[edge[1]].add(edge[0])
+            
         leaves = []
-
-        # Find all the leaves by searching through entire graph
-        for i in range(n):
-            if len(adj.get(i)) == 1:  # If node only has 1 neighbor, it's a leaf
-                leaves.append(i)
-
-        # Trim the leaves until reaching the centroids
+        for key in adj:
+            if len(adj.get(key)) == 1:
+                leaves.append(key)
+        
+        # keep iterating until there are two nodes left
+        # if performing level by level updates, it should result in remaining one or two centroids!        
+        visited = set()
         remaining_nodes = n
         while remaining_nodes > 2:
-            remaining_nodes -= len(leaves)
+            remaining_nodes -= len(leaves)  # subtract total from # of leaves that will be detached
             new_leaves = []
-
-            # remove the current leaves along with the edges
+            # level-order, we strip leaves until empty and populate new_leaves
             while leaves:
-                leaf = leaves.pop()
-                # the only neighbor left for the leaf node
-                neighbor = adj[leaf].pop()
-                # remove the only edge left
-                adj[neighbor].remove(leaf)
-                if len(adj[neighbor]) == 1:
-                    new_leaves.append(neighbor)
+                parent = leaves.pop()
+                
+                # for each leaf, we want to find the next inner leaf by iterating each neighbor
+                for nei in adj.get(parent):
 
-            # prepare for the next round
+                    # we want to detach the inner node from outer leaf to create a new leaf node
+                    # we cannot skip this process. must be done on every node!
+                    adj.get(nei).remove(parent)
+                    # now we can skip if visited
+                    if nei in visited:
+                        continue
+                    
+                    if len(adj.get(nei)) == 1:
+                        # add to visited
+                        visited.add(nei)
+
+                        # add to next level, only if it's a leaf node
+                        new_leaves.append(nei)
+
+            # update next level
             leaves = new_leaves
-
-        # The remaining nodes are the centroids of the graph
+        
         return leaves
 
 if __name__ == '__main__':

@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/remove-linked-list-elements
 """
-from node_list import ListNode
+from node.node_list import ListNode
 class Solution:
     """
     Two pointer.

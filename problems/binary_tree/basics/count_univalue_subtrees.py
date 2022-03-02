@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/count-univalue-subtrees/
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class Solution:
     """
     This video does a great job with explaining univalue subtrees by giving tons of examples.

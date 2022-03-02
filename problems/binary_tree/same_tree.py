@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/same-tree/
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class Solution:
     def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
         """

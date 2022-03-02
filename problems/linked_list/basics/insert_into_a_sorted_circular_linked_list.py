@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/insert-into-a-sorted-circular-linked-list/
 """
-from node_list import ListNode
+from node.node_list import ListNode
 class Solution:
     def insert(self, head: 'ListNode', insertVal: int) -> 'ListNode':
         insert_node = ListNode(insertVal, None)

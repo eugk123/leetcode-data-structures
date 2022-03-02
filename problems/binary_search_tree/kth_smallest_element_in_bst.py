@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/kth-smallest-element-in-a-bst/
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class Solution:
     def kthSmallestDfsRecursive(self, root: TreeNode, k: int) -> int:
         # Use Inorder to traverse through binary_tree. Take the min everytime and end after finishing traversal. Return min

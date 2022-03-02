@@ -21,51 +21,44 @@ class Solution:
     The array contains three numbers: (0 = Unvisited, 1 = Group A, -1 = Group B).
     Once the entire graph has been visited or if two node of the same group are next to each other, the recursion ends.
     """
-    def possibleBipartition(self, N, dislikes):
-        def dfs(index, prev_group):
-            print(index, prev_group, visited[index - 1])
-
-            if visited[index - 1] == prev_group:
-                return False
-
-            # Group A = 1, Group B = -1
-            if visited[index - 1] == 1 or visited[index - 1] == -1:
-                return
-
-            # Alternate Groups Every Traversal, Starting point (else) set to 1
-            if prev_group == 1:
-                visited[index - 1] = -1
-            elif prev_group == -1:
-                visited[index - 1] = 1
-            else:
-                # You can choose either 1 or -1.
-                visited[index - 1] = 1
-
-            for nei in adj.get(index):
-                prev = visited[index - 1]
-                if dfs(nei, prev) is False:
-                    return False
-
-            return
-
+    def possibleBipartition(self, n: int, dislikes: List[List[int]]) -> bool:
+        
         adj = {}
-        # Range 1 to N + 1 because first index is 1
-        for i in range(1, N + 1):
+        for i in range(1, n + 1):
             adj[i] = []
-
         for edge in dislikes:
             adj[edge[0]].append(edge[1])
             adj[edge[1]].append(edge[0])
 
-        visited = [0] * N
-
-        # Can have multiple components
-        # First index = 1
-        for i in range(1, N + 1):
-            prev = None  # There is no previous, so set to None
-            if dfs(i, prev) is False:
+        def dfs(current, previous_visited_value):            
+            # Before returning on visited,
+            # Check if current and previous are same type. If so, not a bipartite graph!
+            if previous_visited_value == visited[current - 1]:
                 return False
+            
+            # If visited, return
+            if visited[current - 1] != 0:
+                return True            
 
+            # If previous visited is 1, then we switch current visited to -1
+            if previous_visited_value == 1:
+                visited[current - 1] = -1
+            else:
+                visited[current - 1] = 1
+            
+            for nei in adj.get(current):
+                # Update previous visited value
+                previous_visited_value = visited[current - 1]
+                if not dfs(nei, previous_visited_value):
+                    return False
+            return True
+        
+        visited = [0] * n
+
+        # We want to check all components
+        for i in range(1, n + 1):
+            if not dfs(i, None):
+                return False
         return True
 
 if __name__ == '__main__':

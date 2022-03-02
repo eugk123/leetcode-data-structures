@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/insert-into-a-binary-search-tree
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class Solution:
     def insertIntoBST(self, root: TreeNode, val: int) -> TreeNode:
         def insert(root, node):

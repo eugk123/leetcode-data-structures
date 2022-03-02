@@ -1,4 +1,4 @@
-from node_list import ListNode
+from node.node_list import ListNode
 class Solution:
     def reverseBetween(self, head: ListNode, left: int, right: int) -> ListNode:
         def reverseList(head):

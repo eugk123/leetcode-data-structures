@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/count-good-nodes-in-binary-tree
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 import math
 class Solution:
     def goodNodes(self, root: TreeNode) -> int:

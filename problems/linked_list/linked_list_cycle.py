@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/linked-list-cycle
 """
-from node_list import ListNode
+from node.node_list import ListNode
 class Solution:
     """
     Two Pointer - Fast and Slow. Use try/except. Makes it so much easier.

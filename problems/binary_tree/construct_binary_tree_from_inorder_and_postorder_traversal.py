@@ -1,19 +1,48 @@
 """
 https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 from typing import List
 class Solution:
-    """
-    https://www.youtube.com/watch?v=s5XRtcud35E
-
-    The core idea is: Starting from the last element of the postorder and inorder array, we put elements from postorder
-    array to a stack and each one is the right child of the last one until an element in postorder array is equal to
-    the element on the inorder array. Then, we pop as many as elements we can from the stack and decrease the mark
-    in inorder array until the peek() element is not equal to the mark value or the stack is empty. Then, the new
-    element that we are gonna scan from postorder array is the left child of the last element we have popped out from the stack.
-    """
     def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
+        """
+        See Construct Binary Tree From Preorder and Inorder Traversal.
+
+        Given:
+        postorder = [9,15,7,20,3] -> root = TreeNode(postorder[len(postorder)-1] = 3)
+        inorder   = [9,3,15,20,7] -> mid = inorder.index(root.val) = inorder.index(3)=1
+
+
+        Structure of postorder and inorder
+        postorder = [9,15,7,20,3] -> |left|right|root| = |9|15,7,20|3|
+                                    0:m  m:L-1   L
+        inorder   = [9,3,15,20,7] -> |left|root|right| = |9|3|15,20,7|
+                                    0:m   m   m+1:L
+                                    
+        root.left = buildTree(inorder[:mid], postorder[:mid])
+        root.right = buildTree(inorder[mid+1:L-1], postorder[mid:L-1])
+        """
+        if not postorder or not inorder:
+            return None
+        L = len(postorder)
+        root = TreeNode(postorder[L-1])
+        mid = inorder.index(root.val)
+        
+        root.left = self.buildTree(inorder[:mid], postorder[:mid])
+        root.right = self.buildTree(inorder[mid+1:], postorder[mid:L-1])
+        return root
+        
+    def buildTreeIterative(self, inorder: List[int], postorder: List[int]) -> TreeNode:
+        """
+        https://www.youtube.com/watch?v=s5XRtcud35E
+        https://jamboard.google.com/d/19j1pvZjKI2gQOi_DhS9EQK35ITF-JxsP62r1STZo3Tc/viewer
+
+        The core idea is: Starting from the last element of the postorder and inorder array, we put elements from postorder
+        array to a stack and each one is the right child of the last one until an element in postorder array is equal to
+        the element on the inorder array. Then, we pop as many as elements we can from the stack and decrease the mark
+        in inorder array until the peek() element is not equal to the mark value or the stack is empty. Then, the new
+        element that we are gonna scan from postorder array is the left child of the last element we have popped out from the stack.
+        """
         if not inorder or not postorder:
             return None
 

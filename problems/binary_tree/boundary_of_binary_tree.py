@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/boundary-of-binary-tree
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 from typing import List
 class Solution:
     """

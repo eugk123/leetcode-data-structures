@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/search-in-a-binary-search-tree/
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class Solution:
     def searchBST(self, root: TreeNode, val: int) -> TreeNode:
         """

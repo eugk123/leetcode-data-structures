@@ -1,7 +1,7 @@
 """
 https://leetcode.com/problems/merge-two-binary-trees/
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 class Solution:
     """
     Most optimal is to update one of the trees to save space.
