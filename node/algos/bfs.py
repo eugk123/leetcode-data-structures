@@ -3,7 +3,7 @@ There is only iterative implementation of BFS.
 Use for calculating shortest path.
 """
 from collections import deque
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 def bfs_tree(root: TreeNode):
     queue = deque([root])  # Initialize deque with root
 

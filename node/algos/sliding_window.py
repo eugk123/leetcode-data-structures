@@ -7,6 +7,30 @@ right-open). A sliding window is a window "slides" its two boundaries to the cer
 
 Time Complexity of this algorithm should result in linear time O(n)
 """
+# Length of longest substring without repeating characters
+def sliding_window(s: str) -> int:  # Sliding window                                                                          
+    result = 0
+    unique_letters = set()
+
+    # Use a set to determine if we got duplicates
+    left = 0
+    for right in range(len(s)):
+
+        # When condition is met (right finds duplicate),
+        # Continuously move left pointer and remove from set.
+        # The while loop will break once the repeated character is removed.
+        while s[right] in unique_letters:
+            unique_letters.remove(s[left])
+            left += 1
+
+        # Keep adding character to set to find repeats
+        unique_letters.add(s[right])
+
+        # Update max.
+        result = max(result, right - left + 1)
+
+    return result
+
 def sliding_window_array(nums:List[int]):
 
     current_sum = 0

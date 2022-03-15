@@ -5,9 +5,8 @@ binary search - O(log n)
 quicksort time - O(nlogn)
 
 heap add/remove - O(log n)
-heap lookup minimum - O(1)
-convert list to heap - O(n)
-convert array to heap - O(nlogn)
+heap lookup minimum (or max) - O(1)
+heapify (convert list to heap) - O(n)
 ```
 Code Snippets
 ```python
@@ -21,6 +20,13 @@ matrix = [[0]*cols for i in range(rows)]  # matrix initialization
 
 ## Counter
 map = collections.Counter(nums) # =k: val, v: count
+
+## Linked Hashmap
+collections.OrderedDict()
+ordered_dict = collections.OrderedDict()
+ordered_dict[<key>] = <value>  # ordered by key
+for k, v in ordered_dict.items():
+	print("key : {0},value : {1}".format(k, v))
 ```
 
 <table>
@@ -769,6 +775,255 @@ def bfs(root: TreeNode):
 </tr>
 </table>
 
+## Dynamic Programming (Top-down Memoization)
+- For simplicity, we are solving all DP problems using top-down approach only. Bottom-up can sometimes be more optimal in space, but is not necessary to pass the coding round.
+1. Grab intuitions from the question to set up a recurrence relation
+2. Set up the recurrence relation
+3. Mingle your intuitions together to code + conditions
+4. Boundary Case
+
+To implement memo, simply set the dfs method parameters as the key and the dfs method return as the value. The time complexity dramatically reduces to the size of the cache. Adding a cache should be only a few lines of code. Below is an example implementation.
+
+<table>
+<tr> 
+<th> Without Memo</th>
+<th> With Memo</th>
+</tr>
+<tr>
+<td>
+
+```python
+def dfs(index):
+    if index > n:
+        return 0
+
+    if index == n:
+        return 1
+    
+    a = dfs(index + 1)
+    b = dfs(index + 2)
+    
+    return a + b
+return dfs(0)
+```
+
+</td>
+<td>
+
+```python
+def dfs(index):
+    # MEMO Get
+    if index in memo:
+        return memo[index]
+
+    if index > n:
+        return 0
+    if index == n:
+        return 1
+    
+    a = dfs(index + 1)
+    b = dfs(index + 2)
+    
+    # MEMO Update
+    memo[index] = a + b 
+    return a + b
+
+# MEMO Init
+memo = {} 
+return dfs(0)
+```
+
+</td>
+</tr>
+</table>
+
+### Unique Ways (a + b)
+<b>Problems</b>: Climbing Stairs | Fibonacci Numbers | Target Sum | Unique Paths | Out Of Boundary Paths | Knight Probability in Chessboard
+
+<b>Statement:</b>
+Given a target find minimum (maximum) path / sum to reach the target.
+
+<b>Approach:</b>
+Choose minimum (maximum) path among all possible paths before the current state, then add value for the current state.
+
+<table>
+<tr> 
+<th> Find total unique paths to reach end</th>
+<th> Find total unique paths to reach target</th>
+</tr>
+<tr>
+<td>
+
+```python
+dfs(i, j):
+    # out of bounds, don't count
+    if i == len(grid) or j == len(grid[0]):
+        return 0
+
+    # end is reached, count
+    if i == len(grid) - 1 and j == len(grid[0] - 1:
+        return 1
+
+    # try all paths.
+    a = dfs(i + 1, j) # right
+    b = dfs(i, j + 1) # down
+
+    return a + b
+```
+
+</td>
+<td>
+
+```python
+dfs(index, current):
+    # end is reached, target is not met, don't count
+    if index == len(nums) and current != target:
+        return 0
+
+    # end is reached, target is met, count
+    if index == len(nums) and current == target:
+        return 1
+
+    # try paths
+    a = dfs(index + 1, current - nums[index])
+    b = dfs(index + 1, current + nums[index])
+
+    # returning number of ways            
+    return a + b
+```
+
+</td>
+</tr>
+</table>
+
+### Min (Max) Path to Reach a Target (min(a, b))
+<b>Problems</b>: Coin Change | Min Cost Climbing Stairs | Minimum Path Sum
+
+<b>Statement:</b>
+Given a target find minimum (maximum) path / sum to reach the target.
+
+<b>Approach:</b>
+Choose minimum (maximum) path among all possible paths before the current state, then add value for the current state.
+
+<table>
+<tr> 
+<th> Find minimum path to reach target</th>
+<th> Find minimum sum to reach target</th>
+</tr>
+<tr>
+<td>
+
+```python
+dfs(index):
+    # out of bounds, don't count
+    if index >= len(cost):
+        return 0
+
+    # last index, count
+    if index == len(cost) - 1:
+        return 1
+
+    # try paths
+    a = 1 + dfs(index + 1)
+    b = 1 + dfs(index + 2)
+
+    # return min / max total count
+    return min(a, b)
+```
+
+</td>
+<td>
+
+```python
+dfs(index):
+    # out of bounds, don't add
+    if index >= len(cost):
+        return 0
+
+    # last index, add sum = nums[index]
+    if index == len(cost) - 1:
+        return nums[index]
+
+    # try paths
+    a = nums[index] + dfs(index + 1)
+    b = nums[index] + dfs(index + 2)
+
+    # return min / max total sum
+    return min(a, b)
+```
+
+</td>
+</tr>
+</table>
+
+
+### Longest Common Subsequence (DP on Strings)
+<b>Problems (2 Strings)</b>: [<i>2 Strings</i>] Longest Common Subsequence | Edit Distance | Distinct Subsequences Total
+
+<b>Problems (1 Strings)</b>: Longest Increasing Subsequence | Decode Ways | Word Break 
+
+<b>Statement:</b>
+Given two strings s1 and s2, return some result.
+
+<b>Approach:</b>
+Most of the problems on this pattern requires a solution that can be accepted in O(n^2) complexity.
+
+<table>
+<tr> 
+<th> Longest Common Subsequence</th>
+<th> Distinct Subsequences</th>
+</tr>
+<tr>
+<td>
+
+```python
+def dfs(i, j):
+    # When the end of text1 or text2 is reached, return 0
+    if i == len(text1) or j == len(text2):
+        return 0
+    
+    # Same letter, we have a common subsequence, count 1, and traverse both i and j
+    if text1[i] == text2[j]:    
+        return 1 + dfs(i + 1, j + 1)
+    
+    # Try all possible paths, don't count, and move either i or j
+    else:
+        a = dfs(i + 1, j)
+        b = dfs(i, j + 1)
+        
+        return max(a, b)
+```
+
+</td>
+<td>
+
+```python
+def dfs(i, j):
+    # if t end is reached first, count
+    if j == len(t):
+        return 1
+
+    # if s end is reached first, do not count
+    if i == len(s):
+        return 0            
+
+    # equal, explore paths
+    if s[i] == t[j]:
+        
+        a = dfs(i + 1, j) # move only i to capture all possibilities
+        b = dfs(i + 1, j + 1) # move both
+        return a + b
+    
+    # not equal, just move i
+    else:
+        return dfs(i + 1, j) # move only i to capture all possibilities
+```
+
+</td>
+</tr>
+</table>
+
+
 ## HEAP (priority queue)
 ### Heap Operations
 <table>
@@ -861,7 +1116,100 @@ heapq.heappop(max_heap)[1]  # pops min ct = -3, returning val = 8
 </table>
 
 ## TRIE
+### Implement Trie
+
+<table>
+<tr> 
+<th> TrieNode & Trie init()</th>
+<th> insert(word)</th>
+</tr>
+<tr>
+<td>
+
 ```python
+class TrieNode:
+    def __init__(self):
+        self.is_word = False
+        self.children = {}
+
+class Trie:
+    def __init__(self):
+        """
+        Initialize your data structure here.
+        """
+        self.root = TrieNode()
 ```
 
+</td>
+<td>
 
+```python
+# class Trie - continued
+    def insert(self, word: str) -> None:
+        """
+        Inserts a word into the trie.
+
+        Time O(K) where K is length of word 
+        """
+        curr = self.root
+        for letter in word:
+            if letter not in curr.children:
+                curr.children[letter] = TrieNode()
+            curr = curr.children[letter]
+        curr.isWord = True
+```
+
+</td>
+</tr>
+</table>
+
+
+<table>
+<tr> 
+<th> search(word)</th>
+<th> startsWith(prefix)</th>
+</tr>
+<tr>
+<td>
+
+```python
+# class Trie - continued
+    def search(self, word: str) -> bool:
+        """
+        Returns if the word is in the trie.
+
+        Time O(K) where K is length of word
+        """
+        curr = self.root
+        for letter in word:
+            if letter in curr.children:
+                curr = curr.children[letter]
+            else:
+                return False
+        return curr.isWord
+```
+<td>
+
+```python
+# class Trie - continued
+    def startsWith(self, prefix: str) -> bool:
+        """
+        Returns if there is any word in the trie 
+        that starts with the given prefix.
+
+        Time O(K) where K is length of word
+        """
+        curr = self.root
+        for letter in prefix:
+            if letter in curr.children:
+                curr = curr.children[letter]
+            else:
+                return False
+        return True
+```
+
+</td>
+
+</td>
+</tr>
+</table>

@@ -2,7 +2,7 @@
 This is the recursive implementation of DFS.
 Use for finding combinations and exhausting all possibilities.
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 def dfs_tree(node: TreeNode):
     # Constraint: Visited
     if node in visited:

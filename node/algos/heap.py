@@ -8,6 +8,7 @@ This file is just a quick tutorial on how heapq module works
 https://www.ashatutorials.com/python_heapq.html
 """
 import heapq
+import collections
 
 # heapify(x)
 # Transform given list x in to a min-heap, in-place, in linear time.
@@ -37,13 +38,19 @@ print("From empty list using heappush : {}".format(minHeap))
 
 # heappop(heap)
 # Remove and return smallest element from heap maintaining heap property.
-minHeap = [1, 2, 3, 6, 7, 5, 9, 11, 15, 8]
-
-print('\nheappop() example:')
+minHeap = [31, 20, 1, 2, 3, 6, 7, 5, 9, 11, 15, 8]
+heapq.heapify(minHeap)
+print('\nheappop() min heap example:')
 print('Before :', minHeap)
 print('heappop() :', heapq.heappop(minHeap))
 print('After  :', minHeap)
 
+maxHeap = [x*-1 for x in minHeap]
+heapq.heapify(maxHeap)
+print('\nheappop() max heap example:')
+print('Before :', maxHeap)
+print('heappop() :', heapq.heappop(maxHeap))
+print('After  :', maxHeap)
 # heappushpop(heapList, e)
 # Pushes element 'e' to the heap and pop() the smallest element from the heap.
 # It runs efficiently compare to heappush() executed followed by heappop().
@@ -70,13 +77,8 @@ n1 = [1, 2, 3, 6, 7, 5, 9, 11, 15, 8]
 print(heapq.nlargest(3, n1))
 
 # get k most frequent numbers
-frequency_map = dict()
 nums = [4, 1, 2, 4, 4, 6, 7, 8, 4, 3, 8, 8]
-for num in nums:
-    if frequency_map.get(num) is None:
-        frequency_map[num] = 1
-    else:
-        frequency_map[num] += 1
+frequency_map = collections.Counter(nums)
 
 max_heap = [(-value, key) for key, value in frequency_map.items()]
 print(max_heap)

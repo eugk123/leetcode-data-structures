@@ -1,7 +1,7 @@
 """
 This is the iterative implementation of DFS.
 """
-from node_tree import TreeNode
+from node.node_tree import TreeNode
 def dfs(root: TreeNode):
 
    stack = [root]  # Initialize stack with root
