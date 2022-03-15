@@ -22,14 +22,13 @@ class Solution:
             if (current, index) in memo:
                 return memo.get((current, index))
 
-            # Constraint: if end is reached, return
-            if index == len(nums):
-
-                # Constraint: target is reached, +1
-                if current == S:
-                    return 1
-                else:
-                    return 0
+            # end is reached, target is not met, don't count
+            if index == len(nums) and current != target:
+                return 0
+            
+            # end is reached, target is met, count
+            if index == len(nums) and current == target:
+                return 1
 
             # if (current, index) not in memo:
             add = dfs(current + nums[index], index + 1)

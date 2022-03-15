@@ -1,5 +1,7 @@
 """
 https://leetcode.com/problems/merge-k-sorted-lists
+
+**There is a heap type solution under the heap section
 """
 from node.node_list import ListNode
 from typing import List

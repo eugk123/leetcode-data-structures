@@ -3,26 +3,55 @@ https://leetcode.com/problems/climbing-stairs/
 """
 class Solution:
     """
-    Bottom-up Memoization
-    https://www.youtube.com/watch?v=pQldnua_hZ4&list=PLujIAthk_iiO7r03Rl4pUnjFpdHjdjDwy&index=2&t=161s
+    Top-down Memo 1D
+
+    Counting total number of possibilities. 
+    - Out of bounds return: 0
+    - End of array return: 1
+    - End return: summation of paths (a + b)
+
+    Time O(N)
     """
     def climbStairs(self, n: int) -> int:
-        memo = [0]*(n+1)  # Initialize list based on length n
-        memo[0] = 1  # Base Case
-        memo[1] = 1  # Base Case
-        return self.recurse(n, memo)
+        def dfs(index):
+            # MEMO Get
+            if index in memo:
+                return memo[index]
 
-    def recurse(self, n, memo):
-        # Check if current stairs value has already been computed - This speeds up computation time
-        if memo[n] > 0:
-            return memo[n]
+            # out of bounds, don't count
+            if index > n:
+                return 0
 
-        # Store current stairs value
-        waysToCurrentStair = self.recurse(n - 1, memo) + self.recurse(n - 2, memo)
-        memo[n] = waysToCurrentStair
+            # end is reached, count
+            if index == n:
+                return 1
+            
+            a = dfs(index + 1)
+            b = dfs(index + 2)
 
-        # Return current stairs value
-        return waysToCurrentStair
+            # MEMO Update
+            memo[index] = a + b
+            
+            return a + b
+        # MEMO Init
+        memo = {}
+        return dfs(0)
 
+    def climbStairsTLE(self, n: int) -> int:
+        def dfs(index):
+
+            # out of bounds, don't count
+            if index > n:
+                return 0
+                
+            # end is reached, count
+            if index == n:
+                return 1
+            
+            a = dfs(index + 1)
+            b = dfs(index + 2)
+            
+            return a + b
+        return dfs(0)
 if __name__ == '__main__':
     print(Solution().climbStairs(5))

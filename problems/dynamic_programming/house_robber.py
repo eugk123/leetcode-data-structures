@@ -3,45 +3,85 @@ https://leetcode.com/problems/house-robber/
 """
 from typing import List
 class Solution:
+    """
+    Top-down Memo 1D
+
+    Maximum cost. 
+    - Out of bounds return: 0
+    - End of array return: current cost
+    - End return: maximum of paths max(a, b)
+
+    O(n) Time - len of cache
+    O(n) Space - len of cache
+    """
     def rob(self, nums: List[int]) -> int:
         """
-        Bottom-up Memoization
+        1238
+        x x 
+        x  x
 
-        https://www.youtube.com/watch?v=73r3KWiEvyk&t
-
-        example:
-        idx.  0   1   2   3   4  ...
-        nums [1,  2,  3,  1,  5  ...]
-        opt1  x     | ?   ?   ?  ...
-              1       4
-        opt2      x     | ?   ?  ...
-                  2       3
-        max   1   2   4   4
-
-
-        Recurrence relationship is
-        dp(i) = dp(i-2) + nums[i]
-
-        Since you can't rob adjacent houses, we can split the array into a subarray by skipping next index.
         """
+        def dfs(index):
+            if index in memo:
+                return memo.get(index)
+            
+            # out of bounds, add 0
+            if index == len(nums):
+                return 0
 
-        # Base cases for len of nums of 0, 1, and 2
-        if not nums:
-            return 0
-        if len(nums) == 1:
-            return nums[0]
-        if len(nums) == 2:
-            return max(nums[0], nums[1])
+            # at last index, add sum
+            if index == len(nums) - 1:
+                return nums[index]
+            
+            
+            a = dfs(index + 1)  # skip current index to add later, like 3 spaces away
+            b = nums[index] + dfs(index + 2)  # skip 2 indices and rob
+            memo[index] = max(a, b)
+            return max(a, b)
+        
+        memo = {}
+        return dfs(0)
 
-        # Initialize memo array: key-nums_index, value-total_robbed
-        dp = [0] * len(nums)
+    def rob2(self, nums: List[int]) -> int:
+        """
+        Alternatively, instead of starting at all indices, just skip 2 and skip 3
+        """
+        def dfs(index):
+            if index in memo:
+                return memo.get(index)
+            
+            if index >= len(nums):
+                return 0
+            if index == len(nums) - 1:
+                return nums[index]
+            
+            # skip 1 house
+            a = nums[index] + dfs(index + 2)
 
-        # Base cases for i == 0 and i == 1
-        dp[0] = nums[0]
-        dp[1] = max(nums[0], nums[1])
+            # skip 2 houses
+            b = nums[index] + dfs(index + 3)
+            
+            memo[index] = max(a, b)
+            
+            return max(a, b)
+        
+        memo = {}        
+        return max(dfs(0), dfs(1))
 
-        # Recurrence relationship
-        for i in range(2, len(nums)):
-            dp[i] = max(dp[i - 2] + nums[i], dp[i - 1])
+    def robTLE(self, nums: List[int]) -> int:
+        
+        def dfs(index):
+            if index >= len(nums):
+                return 0
+            if index == len(nums) - 1:
+                return nums[index]
+            
+            # skip 1 house
+            a = nums[index] + dfs(index + 2)
 
-        return dp[-1]
+            # skip 2 houses
+            b = nums[index] + dfs(index + 3)
+                        
+            return max(a, b)
+        
+        return max(dfs(0), dfs(1))

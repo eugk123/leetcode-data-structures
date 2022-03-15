@@ -81,7 +81,6 @@ class Solution:
             if current_sum == targetSum:
                 self.result += 1
             
-            
             if root.left:
                 dfs(root.left, current_sum + root.left.val, current_path + [root.left.val])
             if root.right:

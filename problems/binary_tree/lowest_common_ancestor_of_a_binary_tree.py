@@ -9,12 +9,61 @@ Given constraints:
 """
 from node.node_tree import TreeNode
 class Solution:
-    """
-    This solution works for Binary and Binary Search Trees.
+    def lowestCommonAncestorEugene(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        """
+        This solution works for Binary and Binary Search Trees.
+        
+        When node == p or node == q, we update global result = node.
+        When left and right are both True, we update global result = node.
 
-    Time and Space O(N)
-    """
+           1       left == True, right == True
+         T/ \T     result = 1
+        p2   3q
+        
+           1       left = True @ 2, right = False
+         T/ \F     result = 2
+        p2   3
+          \
+          q4 
+        Time and Space O(N)
+        """
+        def dfs(root):
+            # null, return False
+            if not root:
+                return False
+            
+            # found p or q, return True, update result
+            if root == p or root = q:
+                self.result = root
+                return True
+
+            left = dfs(root.left)
+            right = dfs(root.right)
+
+            # in the event that p and q are on opposite sides of the root, 
+            # we can overwrite current result with the true LCA.
+            if left and right:
+                self.result = root
+
+            # we want to make sure we are returning True if one of the sides has p or q.
+            # this is required for finding the LCA if two nodes are on different ends of the root.
+            if left and not right:
+                return True
+            if not left and right:
+                return True
+                
+            return False
+        
+        self.result = None
+        dfs(root)
+        return self.result
+    
     def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        """
+        This solution works for Binary and Binary Search Trees.
+
+        Time and Space O(N)
+        """
         def dfs(root):
             if not root:
                 return False
