@@ -4,9 +4,75 @@ https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-t
 from node.node_tree import TreeNode
 from typing import List
 class Solution:
+    def buildTree(self, inorder: List[int], postorder: List[int]) -> Optional[TreeNode]:
+        """
+        Given:
+        post  = [4,5,2,6,7,3,1]
+        inord = [4,2,5,1,6,3,7]
+        
+        Notice in postorder traversal, when iterating from end, we can get the next root
+            1 <- 1st root
+        2     3 <- 2nd root
+        4  5  6r   7 <- 3rd root
+
+        Detailed walkthrough:
+        dfs(0,6)
+        root_value = 1 -> mid_index = 3
+        in = [4,5,2,6,7,3,1]
+                L  |M|  R
+            l  m-1 m+1  r
+            
+        >>dfs(0,6).right = dfs(3+1,6)=dfs(4,6)
+            root_value = 3 -> mid_index = 5
+            in = [4,5,2,6,7,3,1]
+                        l|M|r
+            >>dfs(4,6).right = dfs(4,4)
+                root_value = 7 -> mid_index = 4
+                in = [4,5,2,6,7,3,1]
+                            x <- l=r=m
+            >>dfs(4,6).left = dfs(6,6)
+                root_value = 1 -> mid_index = 6
+                in = [4,5,2,6,7,3,1]
+                                x <- l=r=m
+        >>dfs(0,6).left = dfs(1,3-1)=dfs(0,2)
+            in = [4,5,2,6,7,3,1]
+                l|M|r
+            root = 5 -> mid = 2
+        """
+        def dfs(left, right):
+            # if there is no elements to construct subtrees
+            if left > right:
+                return None
+            
+            # get root value from end of postorder
+            root_value = postorder.pop()
+            node = TreeNode(root_value)
+            
+            # root splits inorder array to left | mid | right
+            mid = root_val_to_inorder_index.get(root_value)
+            
+            # right path is from mid+1 to end
+            node.right = dfs(mid + 1, right)
+            
+            # left path is from 0 to mid-1
+            node.left = dfs(left, mid - 1)
+            
+            return node
+    
+        # We know the roots can be found from the right of the postorder array
+        # We can then find the mid pointer for the inorder array.
+        # So we need root_value -> inorder root_index 
+        root_val_to_inorder_index = {}
+        for i in range(len(inorder)):
+            root_val_to_inorder_index[inorder[i]] = i
+                        
+        return dfs(0, len(postorder) - 1)
     def buildTree(self, inorder: List[int], postorder: List[int]) -> TreeNode:
         """
         See Construct Binary Tree From Preorder and Inorder Traversal.
+
+        This is not the optimal solution because list.index(val) is O(N) which makes the entire
+        time complexity of O(n^2). We are also passing deepcopies of arrays increasing the space to O(n^2) as well
 
         Given:
         postorder = [9,15,7,20,3] -> root = TreeNode(postorder[len(postorder)-1] = 3)

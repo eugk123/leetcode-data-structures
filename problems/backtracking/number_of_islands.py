@@ -76,45 +76,98 @@ class Solution:
             queue.append([i, j])
 
             # Indice movement for neighbors: Down, Up, Right, Left
-            directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
+            directions = [(1,0),(-1,0),(0,1),(0,-1)]
+            
+            # Sink current index
+            grid[i][j] = '0'
 
             # Perform BFS. The trick is to use the directions (left, right, up, down) to iterate through the neighbors.
             # Figure out your constraints (out of bounds, gates, shortest path). Then process element
             while queue:
-                curr = queue.popleft()
-
-                # Grab current row and col indices
-                c_i = curr[0]
-                c_j = curr[1]
+                ci, cj = queue.popleft()
 
                 # Traverse neighboring elements
                 for direction in directions:
                     # Update current indices with direction you are going
-                    i = c_i + direction[0]
-                    j = c_j + direction[1]
+                    i = ci + direction[0]
+                    j = cj + direction[1]
 
-                    # Constraints: (1) Out of bounds, (2) Value == 0 or Visited
-                    if i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]) or grid[i][j] == "0" or (i, j) in visited:
+                    # Constraints: (1) Out of bounds
+                    if i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]):
                         continue
 
-                    # Process - add to visited
-                    visited.add((i, j))
+                    if grid[i][j] == '0':
+                        continue
+                    grid[i][j] = '0'
 
                     # Add neighbor to queue
                     queue.append([i, j])
 
-        visited = set()
         count = 0
-
+        
         # Start only at land (val = 1). Since we're counting number of islands,
         for i in range(len(grid)):
             for j in range(len(grid[0])):
-                if grid[i][j] == '1' and (i, j) not in visited:
+                if grid[i][j] == '1':
                     count += 1
                     bfs(i, j)
 
         return count
 
+    def numIslandsBfsVisited(self, grid: List[List[str]]) -> int:
+        def bfs(i, j):
+            # Queue will consist of INDICES. Not element values.
+            queue = collections.deque()
+            queue.append([i, j])
+
+            # Indice movement for neighbors: Down, Up, Right, Left
+            directions = [(1,0),(-1,0),(0,1),(0,-1)]
+            
+            # visit current index
+            visited.add((i, j))
+
+
+            # Perform BFS. The trick is to use the directions (left, right, up, down) to iterate through the neighbors.
+            # Figure out your constraints (out of bounds, gates, shortest path). Then process element
+            while queue:
+                ci, cj = queue.popleft()
+
+                # Traverse neighboring elements
+                for direction in directions:
+                    # Update current indices with direction you are going
+                    i = ci + direction[0]
+                    j = cj + direction[1]
+
+                    # Constraints: (1) Out of bounds
+                    if i < 0 or j < 0 or i >= len(grid) or j >= len(grid[0]):
+                        continue
+
+                    # if not island, skip
+                    if grid[i][j] == '0':
+                        continue
+                    
+                    # if visited, skip
+                    if (i, j) in visited:
+                        continue
+                    
+                    # visit all islands
+                    visited.add((i, j))
+
+                    # Add neighbor to queue
+                    queue.append([i, j])
+
+        count = 0
+        visited = set()
+        
+        # # Start only at land (val = 1). Since we're counting number of islands,
+        for i in range(len(grid)):
+            for j in range(len(grid[0])):
+                if (i, j) not in visited and grid[i][j] == '1':
+                    count += 1
+                    bfs(i, j)
+                    
+        return count
+        
 if __name__ == '__main__':
     grid = [
         ["1", "1", "1", "1", "1"],

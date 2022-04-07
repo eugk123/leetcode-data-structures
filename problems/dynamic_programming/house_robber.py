@@ -34,8 +34,8 @@ class Solution:
                 return nums[index]
             
             
-            a = dfs(index + 1)  # skip current index to add later, like 3 spaces away
-            b = nums[index] + dfs(index + 2)  # skip 2 indices and rob
+            a = dfs(index + 1)  # try all indices. so when we rob, we can rob a 3rd for example. using MEMO we can reduce the subproblems.
+            b = nums[index] + dfs(index + 2)  # when robbing, must skip a house
             memo[index] = max(a, b)
             return max(a, b)
         

@@ -13,8 +13,8 @@ class Solution:
     leetcode
     leet -> code; i = 0 + 4 + 4 = 8 = len(leetcode) -> True
 
-    Time O(n^3) we are traversing the wordDict N number of words, N times
-    Space O(n) size of cache or depth of recursion stack
+    Time O(n^3) we are traversing the wordDict N number of words, N times and performing string slicing so another N times.
+    Space O(n^2) size of cache or depth of recursion stack (this will be length of string * len of wordDict)
     """
     def wordBreak(self, s: str, wordDict: List[str]) -> bool:
         def dfs(i):

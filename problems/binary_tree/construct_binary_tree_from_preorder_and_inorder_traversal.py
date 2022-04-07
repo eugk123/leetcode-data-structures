@@ -6,7 +6,67 @@ from typing import List
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
         """
+        - We understand that preorder traversal is print -> dfs(left) -> dfs(right), therefore, we know that
+          we can create the node and set left and right pointers from left to right of the preorder array.
+          This will require a global variable self.preorder_index and each iteration prior to going deeper, we traverse += 1
+        - If we know the root value, we can split the inorder to left and right subtrees
+
+        -> root = preorder[0] = 1
+        -> mid = inorder.index(preorder[0]) = 3
+                    R
+        preorder = [1,2,4,5,3,6,9,7]    
+        inorder =  [4,2,5|1|6,9,3,7]    left|root|right     so left = [4,2,5] and right = [6,9,3,7]
+                    |   | m |     |                                   0--- m-1           m+1 ----- L
+                    l   r   l     r   we can set left and right indices for LEFT and RIGHT paths
+
+        - We first need a hashmap containing num -> index for inorder. 
+        - In our dfs method, we should be iterating through each preorder value in the array prior to going deeper
+        - We get the inorder root index and we can update the left and right indexes for the left and right path
+        - For left path, left index is always set to 0 and right index is always set to mid - 1
+        - For right path, right index is always set to mid + 1 and right index is always set to end (length - 1)
+        - Eventually, l and r pointers will pass each other when the leafnode get's attached. So we return on left > right
+        - At the end of the method, we want to return the root.
+
+        """
+        find_inorder_mid = {}
+        
+        for i in range(len(inorder)):
+            find_inorder_mid[inorder[i]] = i
+        
+        def dfs(left, right):
+            # left and right pointers
+            if left > right:
+                return
+            
+            # assign root value, initially should be index 0 of preorder
+            root_value = preorder[self.preorder_index]
+            
+            # create Node using root value
+            node = TreeNode(root_value)
+            
+            # update mid index from inorder array
+            mid = find_inorder_mid.get(root_value)
+
+            # similar to printing preorder values, we can traverse to the right
+            self.preorder_index += 1  
+            
+            # left side of tree of the inorder is between beginning(0) and mid-1
+            node.left = dfs(left, mid - 1)
+            
+            # right side of tree of the inorder is between mid+1 and end(L-1)
+            node.right = dfs(mid + 1, right)
+        
+            return node
+        
+        self.preorder_index = 0
+        return dfs(0, len(inorder) - 1)
+        
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> Optional[TreeNode]:
+        """
         https://www.youtube.com/watch?v=ihj4IQGZ2zc
+
+        This is not the optimal solution because list.index(val) is O(N) which makes the entire
+        time complexity of O(n^2). We are also passing deepcopies of arrays increasing the space to O(n^2) as well
 
         Remember, first node of preorder is going to be the root.
         The inorder tells you from the root node what makes up the left and right subtree. 

@@ -14,6 +14,58 @@ class Solution:
 
     Key thing to notice is we can use a stack to collect all positive asteroids. When a negative astroid comes, we need to consider the possiblility of the negative asteroid being bigger than subsequent positive asteroids collected in the stack.
     """
+    def asteroidCollisionConstantSpaceEugene(self, asteroids: List[int]) -> List[int]:
+        """
+        Use stack and return stack as result.
+        
+        O(N) Time O(1) Space
+        """
+        stack = []
+        
+        for asteroid in asteroids:
+            
+            # empty stack, append
+            if not stack:
+                stack.append(asteroid)
+                
+            # stack not empty, we need to check the peek
+            else:
+                peek = stack[len(stack) - 1]
+                
+                # if asteroid is left and peek is left, just append and skip
+                if peek < 0:
+                    stack.append(asteroid)
+                    continue
+                
+                # if asteroid is right and peek is right, just append and skip
+                if peek > 0 and asteroid > 0:
+                    stack.append(asteroid)
+                    
+                # if collision is occuring, we gotta consider some conditions
+                while peek > 0 and asteroid < 0:
+                    
+                    # equal - break both
+                    if peek == abs(asteroid):
+                        stack.pop()
+                        break
+                        
+                    # peek bigger
+                    elif peek > abs(asteroid):
+                        break
+                        
+                    # asteroid bigger
+                    elif peek < abs(asteroid):
+                        stack.pop()
+                    
+                    if not stack or peek < 0:
+                        stack.append(asteroid)
+                        break
+                        
+                    peek = stack[len(stack) - 1]
+                    if peek < 0:
+                        stack.append(asteroid)
+
+        return stack
     def asteroidCollision(self, asteroids: List[int]) -> List[int]:
         stack = []
         result = []

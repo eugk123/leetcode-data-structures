@@ -65,6 +65,9 @@ def bfs_matrix(visited, matrix: List[List[int]], i, j):
     queue = deque()
     queue.append([i, j])
 
+    # Process - add to visited
+    visited.add((i, j))
+
     # Indice movement for neighbors: Down, Up, Right, Left
     directions = [[1, 0], [-1, 0], [0, 1], [0, -1]]
 

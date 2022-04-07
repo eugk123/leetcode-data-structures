@@ -1,6 +1,7 @@
 ## Must Knows
 Time Complexities
 ```
+string slicing - O(n)  ...ex: s[i:i+1]
 binary search - O(log n)
 quicksort time - O(nlogn)
 
